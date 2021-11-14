@@ -1,0 +1,99 @@
+/*----------------------------------------*/
+/*  14 - Components - Banner
+/*----------------------------------------*/
+.hiraola-banner_area {
+	padding-top: 30px;
+	.container-fluid {
+		padding: 0 3%;
+		[class*="col-"] {
+			&:nth-child(-n + 2) {
+				@include breakpoint (max-medium) {
+					padding-bottom: 30px;
+				}
+			}
+		}
+	}
+}
+
+// Static Banner
+.static-banner_area {
+	padding-top: 80px;
+	.static-banner-image {
+		background-image: url("../images/banner/static-banner.png");
+		background-size: cover;
+		min-height: 345px;
+		background-repeat: no-repeat;
+	}
+	.static-banner-content {
+		padding-left: 75px;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		@include breakpoint (max-x_small) {
+			padding-left: 30px;
+		}
+		> p {
+			font-size: 14px;
+			margin-bottom: 0;
+			padding-bottom: 10px;
+			z-index: 99;
+			span {
+				color: $bg-alizarin_color;
+			}
+			&.schedule {
+				margin-bottom: 0;
+				padding-bottom: 35px;
+				span {
+					font-size: 24px;
+					color: $bg-alizarin_color;
+					font-weight: 500;
+				}
+			}
+		}
+		> h2,
+		h3 {
+			font-weight: $body-font_weight;
+			font-size: 36px;
+			letter-spacing: -.025em;
+			margin-bottom: 0;
+			padding-bottom: 10px;
+			@include breakpoint (max-x_small) {
+				font-size: 24px;
+			}
+		}
+		h3 {
+			padding-bottom: 20px;
+		}
+		.hiraola-btn-ps_left {
+			.hiraola-btn {
+				&:hover {
+					box-shadow: 0px 0 15px rgba(0, 0, 0, 0.2);
+					color: $bg-white_color !important;
+				}
+			}
+		}
+	}
+}
+
+// Banner Area Two
+.hiraola-banner_area-2 {
+	padding-top: 80px;
+	[class*="col"] {
+		&:first-child {
+			@include breakpoint (max-medium) {
+				padding-bottom: 30px;
+			}
+		}
+	}
+}
+// Banner Area Three
+.hiraola-banner_area-3 {
+	padding-top: 80px;
+	[class*="col"] {
+		&:nth-child(-n + 2) {
+			@include breakpoint (max-medium) {
+				padding-bottom: 30px;
+			}
+		}
+	}
+}

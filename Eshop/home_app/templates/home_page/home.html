@@ -1,0 +1,307 @@
+{% extends "shared/mainLayout.html" %}
+{% load ratings %}
+{% load static %}
+
+{% block title %}
+    {{ setting.home_title }}
+{% endblock title %}
+
+{% block content %}
+
+
+    <div class="slider-with-category_menu">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col grid-half order-md-2 order-lg-1">
+                    <div class="category-menu">
+                        <div class="category-heading">
+                            <h2 class="categories-toggle"><span>Shop by categories</span></h2>
+                        </div>
+                        <div id="cate-toggle" class="category-menu-list">
+                            <ul>
+                                {% for category in categories %}
+                                    <li class="right-menu"><a href="#">{{ category.name }}</a>
+                                        <ul class="cat-mega-menu">
+                                            {% for child in category.categoryclass_set.all %}
+                                                <li>
+                                                    <a href="{% url 'search_category' category.name child.category_name %}">{{ child.category_name }}</a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                {% endfor %}
+
+                                <li class="rx-parent">
+                                    <a class="rx-default">More Categories</a>
+                                    <a class="rx-show">Collapse</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col grid-full order-md-1 order-lg-2">
+                    <div class="hiraola-slider_area">
+                        <div class="main-slider">
+                            <!-- Begin Single Slide Area -->
+                            {% for slider in sliders %}
+                                <div class="single-slide animation-style-01 bg-1">
+                                    <a href="{{ slider.url }}">
+                                        <img src="{{ slider.image.url }}" alt="{{ slider.description }}" width=1110
+                                             height=520">
+                                    </a>
+                                    <div class="container">
+                                        <div class="slider-content">
+                                            <p>{{ slider.description|safe }}</p>
+                                            <div class="hiraola-btn-ps_left slide-btn">
+                                                <a class="hiraola-btn" href="{{ slider.url }}">Shopping Now</a>
+                                            </div>
+                                        </div>
+                                        <div class="slider-progress"></div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                            <!-- Single Slide Area End Here -->
+                            <!-- Begin Single Slide Area -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col grid-half grid-md_half order-md-2 order-lg-3">
+                    <div class="banner-item img-hover_effect">
+                        <a href="{{ banner.url }}">
+                            <img class="img-full" width="310" height="520" src="{{ banner.image.url }}"
+                                 alt="{{ banner.title }}">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="hiraola-banner_area">
+        <div class="container-fluid">
+            <div class="row">
+                {% for bsb in banners_slider_bottom %}
+                    <div class="col-lg-4">
+                        <div class="banner-item img-hover_effect">
+                            <a href="{{ bsb.url }}">
+                                <img class="img-full" width="722" height="251" src="{{ bsb.image.url }}"
+                                     alt="{{ bsb.title }}">
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Begin Hiraola's Product Area -->
+    <div class="hiraola-product_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="hiraola-section_title">
+                        <h4>New Products</h4>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="hiraola-product_slider">
+                        <!-- Begin Hiraola's Slide Item Area -->
+                        {% for new_product in new_products %}
+                            <div class="slide-item">
+                                <div class="single_product">
+                                    <div class="product-img">
+                                        <a href="{% url 'product_detail' new_product.id new_product.product_name_in_url %}">
+                                            <img class="primary-img" width="438" height="438"
+                                                 src="{{ new_product.image.url }}"
+                                                 alt="{{ new_product.product_name }}">
+                                            <img class="secondary-img" width="438" height="438"
+                                                 src="{{ new_product.image.url }}"
+                                                 alt="{{ new_product.product_name }}">
+                                        </a>
+                                        {% if new_product.is_discount %}
+                                            <span class="sticker-2">{{ new_product.product_discount }} %</span>
+                                        {% endif %}
+                                        <div class="add-actions">
+                                            <ul>
+                                                <li class="quick-view-btn" data-toggle="modal"
+                                                    data-target="#exampleModalCenter"><a
+                                                        href="{% url 'product_detail' new_product.id new_product.product_name_in_url %}"
+                                                        data-toggle="tooltip"
+                                                        data-placement="top"
+                                                        title="See Detail"><i
+                                                        class="ion-eye"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="hiraola-product_content">
+                                        <div class="product-desc_info">
+                                            <h6><a class="product-name"
+                                                   href="{% url 'product_detail' new_product.id new_product.product_name_in_url %}">{{ new_product.product_name }}</a>
+                                            </h6>
+                                            <div class="price-box">
+                                                <span class="new-price">${{ new_product.get_discount }}</span>
+                                                &nbsp;
+                                                {% if new_product.product_discount != None %}
+                                                    <strike>${{ new_product.product_price }}</strike>
+                                                {% endif %}
+                                            </div>
+                                            <div class="additional-add_action">
+                                                <ul>
+                                                    <li><a class="hiraola-add_compare" href="wishlist.html"
+                                                           data-toggle="tooltip" data-placement="top"
+                                                           title="Add To Wishlist"><i
+                                                            class="ion-android-favorite-outline"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                        <!-- Hiraola's Slide Item Area End Here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hiraola's Product Area End Here -->
+
+
+
+
+
+    <div class="static-banner_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="static-banner-image">
+                        <img src="{{ offer_slide.image.url }}" width="1110" height="345" alt="">
+                    </div>
+                    <div class="static-banner-content">
+                        <p>{{ offer_slide.title|safe }}</p>
+                        <div class="hiraola-btn-ps_left">
+                            <a href="{{ offer_slide.url }}" class="hiraola-btn">Shopping Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Begin Hiraola's Product Tab Area Three -->
+    <div class="hiraola-product_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="hiraola-section_title">
+                        <h4>TRENDING PRODUCTS</h4>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="hiraola-product_slider">
+                        <!-- Begin Hiraola's Slide Item Area -->
+                        {% for trend_product in trending_products %}
+                            <div class="slide-item">
+                                <div class="single_product">
+                                    <div class="product-img">
+                                        <a href="{% url 'product_detail' trend_product.id trend_product.product_name_in_url %}">
+                                            <img class="primary-img" width="438" height="438"
+                                                 src="{{ trend_product.image.url }}"
+                                                 alt="{{ trend_product.product_name }}">
+                                            <img class="secondary-img" width="438" height="438"
+                                                 src="{{ trend_product.image.url }}"
+                                                 alt="{{ trend_product.product_name }}">
+                                        </a>
+                                        {% if trend_product.is_discount %}
+                                            <span class="sticker-2">{{ trend_product.product_discount }} %</span>
+                                        {% endif %}
+                                        <div class="add-actions">
+                                            <ul>
+                                                <li class="quick-view-btn" data-toggle="modal"
+                                                    data-target="#exampleModalCenter"><a
+                                                        href="{% url 'product_detail' trend_product.id trend_product.product_name_in_url %}"
+                                                        data-toggle="tooltip"
+                                                        data-placement="top"
+                                                        title="See Detail"><i
+                                                        class="ion-eye"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="hiraola-product_content">
+                                        <div class="product-desc_info">
+                                            <h6><a class="product-name"
+                                                   href="{% url 'product_detail' trend_product.id trend_product.product_name_in_url %}">{{ new_product.product_name }}</a>
+                                            </h6>
+                                            <div class="price-box">
+                                                <span class="new-price">${{ trend_product.get_discount }}</span>
+                                                &nbsp;
+                                                {% if trend_product.product_discount != None %}
+                                                    <strike>${{ trend_product.product_price }}</strike>
+                                                {% endif %}
+                                            </div>
+                                            <div class="additional-add_action">
+                                                <ul>
+                                                    <li><a class="hiraola-add_compare" href="wishlist.html"
+                                                           data-toggle="tooltip" data-placement="top"
+                                                           title="Add To Wishlist"><i
+                                                            class="ion-android-favorite-outline"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                        <!-- Hiraola's Slide Item Area End Here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hiraola's Product Tab Area Three End Here -->
+
+
+
+    <!-- Begin Hiraola's Shipping Area -->
+    <div class="hiraola-shipping_area">
+        <div class="container">
+            <div class="shipping-nav">
+                <div class="row">
+                    {% for sa in shopping_area %}
+                        <div class="col-lg-3 col-md-6">
+                            <div class="shipping-item">
+                                <div class="shipping-icon">
+                                    <img src="{{ sa.image.url }}" width="67" height="57" alt="{{ sa.title }}">
+                                </div>
+                                <div class="shipping-content">
+                                    <h6>{{ sa.title }}</h6>
+                                    <p>{{ sa.sub_title }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hiraola's Shipping Area End Here -->
+
+{% endblock content %}

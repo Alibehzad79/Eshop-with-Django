@@ -1,0 +1,152 @@
+/*----------------------------------------*/
+/*  32 - Pages - My Account
+/*----------------------------------------*/
+.account-page-area {
+	padding: 80px 0;
+	.myaccount-tab-trigger {
+		display: block;
+		@include breakpoint (max-medium) {
+			padding-bottom: 30px;
+		}
+		li {
+			display: block;
+			&:first-child {
+				margin-top: -1px;
+			}
+			a {
+				border: 1px solid #444444;
+				display: block;
+				background: $body-text_color;
+				color: $bg-white_color;
+				text-transform: uppercase;
+				font-weight: 600;
+				padding: 10px 20px;
+				&.active {
+					background: $primary-color;
+					border-color: $primary-color;
+					color: $bg-white_color;
+					&:hover {
+						color: $bg-white_color !important;
+					}
+				}
+				&:hover {
+					color: $primary-color;
+				}
+			}
+		}
+	}
+}
+
+// My Account Tab Content
+.myaccount-tab-content {
+	border: 1px solid $border-color;
+	padding: 30px;
+	@extend %basetransition;
+}
+
+.myaccount-dashboard {
+	p {
+		margin-bottom: 20px;
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.myaccount-orders {
+	.table {
+		margin-bottom: 0;
+		.account-order-id {
+			&:hover {
+				color: $primary-color;
+			}
+		}
+		&.table-hover {
+			tbody {
+				tr {
+					&:hover {
+						background-color: rgba(0, 0, 0, 0.02);
+					}
+				}
+			}
+		}
+		td,
+		th {
+			vertical-align: middle;
+			text-align: center;
+			@include breakpoint (max-small) {
+				min-width: 180px;
+			}
+		}
+	}
+	.small-title {
+		margin-bottom: 15px;
+	}
+}
+
+/* ---My Account Form Style--- */
+.hiraola-form,
+.hiraola-form-boxed {
+	padding: 30px;
+	border-radius: 0;
+	border: 1px solid $border-color;
+	.hiraola-form-inner {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+		margin-top: -20px;
+		@include breakpoint (xx-small) {
+			display: block;
+		}
+		.single-input {
+			-webkit-box-flex: 0;
+			-ms-flex: 0 0 100%;
+			flex: 0 0 100%;
+			max-width: 100%;
+			margin-top: 20px;
+			@include breakpoint (xx-small) {
+				max-width: 100% !important;
+			}
+			&.single-input-half {
+				-webkit-box-flex: 0;
+				-ms-flex: 0 0 calc(50% - 15px);
+				flex: 0 0 calc(50% - 15px);
+				max-width: calc(50% - 15px);
+			}
+			label {
+				margin-bottom: 8px;
+				display: block;
+			}
+			input,
+			select,
+			textarea {
+				padding: 0 15px;
+				border: 1px solid $border-color;
+				height: 40px;
+				width: 100%;
+			}
+			input {
+				&:first-child {
+					margin-top: 20px;
+				}
+			}
+			.checkbox-input {
+				display: inline-block;
+				label {
+					display: inline-block;
+				}
+			}
+		}
+		a {
+			font-size: 13px;
+			&:hover {
+				color: $primary-color;
+			}
+		}
+	}
+}

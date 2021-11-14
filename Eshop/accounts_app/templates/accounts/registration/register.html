@@ -1,0 +1,74 @@
+{% extends 'shared/mainLayout.html' %}
+{% block title %}
+    Register in Site
+{% endblock %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <br>
+        <p class="alert alert-success text-center">Your already Login</p>
+    {% else %}
+        {% include 'shared/breadcrumb.html' with title="Others" sub_title="Register" %}
+        <div class="hiraola-login-register_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="login-form">
+                                <h4 class="login-title">Register</h4>
+                                <div class="row">
+                                    <div class="col-md-6 col-12 mb--20">
+                                        <label>{{ form.username.label }}*</label>
+                                        {{ form.username }}
+                                        {% for error in form.username.errors %}
+                                            <p class="alert alert-danger">{{ error }}</p>
+                                        {% endfor %}
+
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>{{ form.email.label }}*</label>
+                                        {{ form.email }}
+                                        {% for error in form.email.errors %}
+                                            <p class="alert alert-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>{{ form.password1.label }}*</label>
+                                        {{ form.password1 }}
+                                        {% for error in form.password1.errors %}
+                                            <p class="alert alert-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>{{ form.password2.label }}*</label>
+                                        {{ form.password2 }}
+                                    </div>
+                                    <br>
+                                    {% for error in form.password2.errors %}
+                                        <p class="alert alert-danger">{{ error }}</p>
+                                    {% endfor %}
+                                    <div class="col-12">
+                                        <button type="submit" class="hiraola-register_btn">Register</button>
+                                    </div>
+                                    <hr>
+                                </div>
+                            </div>
+                        </form>
+                        <br>
+                        <div class="login-form">
+                            <h4 class="login-title">You have a account?</h4>
+                            <p> 👇👇 </p>
+                            <div class="col-md-12">
+                                <a href="{% url 'login' %}">
+                                    <button type="button" class="hiraola-login_btn">Login</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}

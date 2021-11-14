@@ -1,0 +1,180 @@
+/*----------------------------------------*/
+/*  15 - Components - Product
+/*----------------------------------------*/
+.hiraola-product_area {
+	padding-top: 75px;
+	margin: 0 auto;
+	text-align: center;
+	.hiraola-section_title {
+		margin-bottom: 30px;
+	}
+	&.section-space_add {
+		padding-bottom: 80px;
+	}
+}
+
+/* ---Hiraola's Product Slider--- */
+.hiraola-product_slider,
+.hiraola-product_slider-3,
+.hiraola-trending-product_slider,
+.hiraola-product-tab_slider-2,
+.hiraola-product-tab_slider-3,
+.shop-product-wrap {
+	.slide-item {
+		.single_product {
+			background-color: $bg-white_color;
+			.product-img {
+				position: relative;
+				overflow: visible;
+				> a {
+					display: block;
+					img {
+						width: 100%;
+					}
+					.secondary-img {
+						position: absolute;
+						left: 0;
+						top: 0;
+						opacity: 0;
+						@include transition-2;
+						width: 100%;
+					}
+				}
+				&:hover {
+					.secondary-img {
+						opacity: 1;
+					}
+				}
+				.add-actions {
+					position: absolute;
+					bottom: 20px;
+					left: 50%;
+					transform: translateX(-50%);
+					@extend %basetransition;
+					opacity: 0;
+					> ul {
+						li {
+							position: relative;
+							margin-bottom: 5px;
+							display: inline-block;
+							> a {
+								background-color: $heading-color;
+								color: $bg-white_color;
+								display: block;
+								width: 30px;
+								height: 30px;
+								line-height: 30px;
+								text-align: center;
+								transform: scaleX(0);
+								> i {
+									font-size: 15px;
+								}
+								&:hover {
+									color: $bg-white_color !important;
+								}
+								&.hiraola-add_cart {
+									@extend %basetransition;
+								}
+								&.hiraola-add_compare {
+									@include transition-2;
+								}
+								&.quick-view-btn {
+									@include transition-3;
+								}
+							}
+						}
+					}
+				}
+			}
+			&:hover {
+				> .product-img {
+					.add-actions {
+						opacity: 1;
+						> ul {
+							> li {
+								> a {
+									transform: scaleX(1);
+								}
+							}
+						}
+					}
+				}
+			}
+			.hiraola-product_content {
+				text-align: left;
+				padding: 0 20px 20px;
+				.product-desc_info {
+					h6 {
+						margin-bottom: 0;
+						padding-bottom: 5px;
+						display: block;
+					}
+					.rating-box {
+						padding-bottom: 3px;
+						> ul {
+							> li {
+								display: inline-block;
+								> i {
+									font-size: 12px;
+								}
+							}
+						}
+					}
+					.price-box {
+						display: inline-block;
+						@include new-price;
+						@include old-price;
+					}
+					.additional-add_action {
+						display: inline-block;
+						float: right;
+						> ul {
+							> li {
+								> a {
+									> i {
+										font-size: 18px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---Hiraola's Countdown--- */
+.hiraola-countdown {
+	.count {
+		border-top: 1px solid $border-color;
+		border-bottom: 1px solid $border-color;
+		border-left: 1px solid $border-color;
+		display: inline-block;
+		position: relative;
+		width: 90px;
+		padding: 10px 0;
+		margin-right: -3px;
+		text-align: center;
+		@include breakpoint (xx-small) {
+			width: 70px;
+		}
+		&:last-child {
+			border-right: 1px solid $border-color;
+		}
+		span {
+			&.count-amount {
+				display: block;
+				font-weight: $heading-font_weight;
+				color: $heading-color;
+				font-size: 24px;
+				@include breakpoint (max-small) {
+					font-size: 20px;
+				}
+			}
+			&.count-period {
+				display: block;
+			}
+		}
+	}
+}

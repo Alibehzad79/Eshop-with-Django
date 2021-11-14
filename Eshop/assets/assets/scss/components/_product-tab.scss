@@ -1,0 +1,119 @@
+/*----------------------------------------*/
+/*  17 - Components - Product Tab
+/*----------------------------------------*/
+/* ---Hiraola's Product Tab Area--- */
+.hiraola-product-tab_area-2,
+.hiraola-product-tab_area-3,
+.hiraola-product-tab_area-4 {
+	background-color: $bg-white_color;
+	padding-top: 75px;
+	.hiraola-section_title-3 {
+		> h4 {
+			padding-bottom: 20px;
+		}
+	}
+	.product-tab {
+		border-bottom: 1px solid $border-color;
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 30px;
+		padding-bottom: 25px;
+		@include breakpoint (max-small) {
+			display: block;
+		}
+		.hiraola-tab_title {
+			@include breakpoint (max-small) {
+				padding-bottom: 20px;
+			}
+			> h4 {
+				text-transform: uppercase;
+				margin-bottom: 0;
+				@include breakpoint (max-medium) {
+					font-size: 20px;
+				}
+			}
+		}
+		> ul {
+			&.product-menu {
+				> li {
+					> a {
+						font-weight: $heading-font_weight;
+						text-transform: uppercase;
+						padding: 0 30px;
+						position: relative;
+						@include breakpoint (max-medium) {
+							padding: 0 15px;
+						}
+						@include breakpoint (max-x_small) {
+							padding: 0 15px 0 0;
+							font-size: 14px;
+						}
+						&:after {
+							background-color: $very-light-grey;
+							content: "";
+							position: absolute;
+							top: 50%;
+							right: -9px;
+							height: 2px;
+							width: 18px;
+							@include breakpoint (max-medium) {
+								width: 10px;
+								right: -5px;
+							}
+							@include breakpoint (max-x_small) {
+								display: none;
+							}
+						}
+					}
+					&:last-child {
+						> a {
+							padding-right: 0;
+							&:after {
+								display: none;
+							}
+						}
+					}
+					&:first-child {
+						> a {
+							@include breakpoint (max-small) {
+								padding-left: 0;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.hiraola-product-tab_area-3 {
+		.product-tab {
+			display: flex;
+			justify-content: flex-start !important;
+			.product-menu {
+				> li {
+					&:first-child {
+						> a {
+							padding-left: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.hiraola-product-tab_area-4 {
+		padding-bottom: 80px;
+	}
+}
+
+/* ---Hiraola's Product Tab Area Three--- */
+.sp-product-tab_area {
+	background-color: $bg-white_color;
+	padding: 0 0 60px;
+	.short-desc {
+		margin: 0 auto;
+		text-align: center;
+		> p {
+			margin-bottom: 0;
+			padding-bottom: 15px;
+		}
+	}
+}

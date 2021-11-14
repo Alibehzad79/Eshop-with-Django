@@ -1,0 +1,91 @@
+{% extends 'shared/mainLayout.html' %}
+{% block title %}
+    Cart
+{% endblock %}
+{% block content %}
+    {% include 'shared/breadcrumb.html' with title='Other' sub_title='Cart' %}
+    {% if orders %}
+        <div class="hiraola-cart-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <form action="javascript:void(0)">
+                            <div class="table-content table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th class="hiraola-product-remove">remove</th>
+                                        <th class="hiraola-product-thumbnail">images</th>
+                                        <th class="cart-product-name">Product</th>
+                                        <th class="hiraola-product-price">Unit Price</th>
+                                        <th class="hiraola-product-quantity">Quantity</th>
+                                        <th class="hiraola-product-subtotal">Total</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    {% for order in orders %}
+                                        <tr>
+                                            <td class="hiraola-product-remove"><a
+                                                    href="{% url 'delete-order' order.id %}"><i
+                                                    class="fa fa-trash" title="Remove"></i></a></td>
+                                            <td class="hiraola-product-thumbnail"><a
+                                                    href="{% url 'product_detail' order.product.id order.product.product_name_in_url %}"><img
+                                                    src="{{ order.product.image.url }}" width='90' height="115"
+                                                    alt="Hiraola's Cart Thumbnail"></a></td>
+                                            <td class="hiraola-product-name"><a
+                                                    href="javascript:void(0)">{{ order.product.product_name }}</a>
+                                            </td>
+                                            <td class="hiraola-product-price"><span
+                                                    class="amount">${{ order.price }}</span> &nbsp;
+                                                {% if order.price_discount is not None %}
+                                                    <span
+                                                            class="badge badge-success">${{ order.price_discount }}% off</span>
+                                                {% endif %} </td>
+                                            <td class="quantity">
+                                                {{ order.count }}
+                                            </td>
+                                            <td class="product-subtotal"><span
+                                                    class="amount">${{ order.get_product_amount_price }}</span></td>
+                                        </tr>
+                                    {% endfor %}
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="coupon-all">
+                                        <div class="coupon">
+                                            <input id="coupon_code" class="input-text" name="coupon_code" value=""
+                                                   placeholder="Coupon code" type="text">
+                                            <input class="button" name="apply_coupon" value="Apply coupon"
+                                                   type="submit">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 ml-auto">
+                                    <div class="cart-page-total">
+                                        <h2>Cart totals</h2>
+                                        <ul>
+                                            <li>Total <span>${{ total.amount_user }}</span></li>
+                                        </ul>
+                                        <a href="{% url 'checkout' %}">Proceed to checkout</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <br>
+        <p class="alert alert-danger text-center">Your Cart is Empty</p>
+        <a href="{% url 'product_list' %}"><p class="alert alert-success text-center"><span
+                class="text-light bg-primary p-3">Go to Shop</span></p></a>
+    {% endif %}
+{% endblock %}

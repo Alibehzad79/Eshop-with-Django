@@ -1,0 +1,74 @@
+{% extends 'shared/mainLayout.html' %}
+
+{% block title %}
+    DashBoard: Hello {{ request.user.username }}
+{% endblock %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+        {% include 'shared/breadcrumb.html' with title='Dashboard' sub_title='My Account' %}
+        <div class="account-page-area">
+            <div class="container">
+                <div class="row">
+                    {% include 'accounts/registration/dashboard_nav.html' with active_show_dashboard='active show' %}
+                    <div class="col-lg-9">
+                        <div class="tab-content myaccount-tab-content" id="account-page-tab-content">
+                            <div class="tab-pane fade active show" id="account-dashboard" role="tabpanel"
+                                 aria-labelledby="account-dashboard-tab">
+                                <div class="myaccount-dashboard">
+                                    <p>Hello <b>{{ user.username }}</b> (not {{ user.username }}? <a
+                                            href="{% url 'logout' %}">Sign
+                                        out</a>)</p>
+                                    <p>From your account dashboard you can view your recent orders, manage your shipping
+                                        and
+                                        billing addresses and edit your password and account
+                                        details.</p>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="account-orders" role="tabpanel"
+                                 aria-labelledby="account-orders-tab">
+                                <div class="myaccount-orders">
+                                    <h4 class="small-title">MY ORDERS</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover">
+                                            <tbody>
+                                            <tr>
+                                                <th>ORDER</th>
+                                                <th>DATE</th>
+                                                <th>STATUS</th>
+                                                <th>TOTAL</th>
+                                                <th></th>
+                                            </tr>
+                                            <tr>
+                                                <td><a class="account-order-id" href="javascript:void(0)">#5364</a></td>
+                                                <td>Mar 27, 2019</td>
+                                                <td>On Hold</td>
+                                                <td>£162.00 for 2 items</td>
+                                                <td><a href="javascript:void(0)"
+                                                       class="hiraola-btn hiraola-btn_dark hiraola-btn_sm"><span>View</span></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a class="account-order-id" href="javascript:void(0)">#5356</a></td>
+                                                <td>Mar 27, 2019</td>
+                                                <td>On Hold</td>
+                                                <td>£162.00 for 2 items</td>
+                                                <td><a href="javascript:void(0)"
+                                                       class="hiraola-btn hiraola-btn_dark hiraola-btn_sm"><span>View</span></a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <p class="alert alert-danger">Your not login in site , First<a class="text-bold"
+                                                                       href="{% url 'login' %}">Login</a></p>
+    {% endif %}
+{% endblock %}

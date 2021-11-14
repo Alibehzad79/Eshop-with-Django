@@ -1,0 +1,655 @@
+/*----------------------------------------*/
+/*  31 - Pages - Blog
+/*----------------------------------------*/
+/* ---Latest Blog--- */
+.hiraola-blog_area {
+	padding: 35px 0 55px;
+	background-color: $bg-white_color;
+	.section_title-2 {
+		margin-bottom: 30px;
+	}
+	.blog-item {
+		.blog-img {
+			a {
+				img {
+					width: 100%;
+					display: block;
+					overflow: hidden;
+				}
+			}
+			&.banner-item {
+				@include breakpoint (max-small) {
+					margin-bottom: 0;
+				}
+			}
+		}
+		.blog-content {
+			.blog-heading {
+				padding-top: 25px;
+				> h5 {
+					margin-bottom: 0;
+					@include breakpoint (max-small) {
+						font-size: 16px;
+					}
+				}
+			}
+			.blog-meta {
+				padding-top: 15px;
+				.blog-time_schedule {
+					display: inline-block;
+				}
+				.meta-author {
+					display: inline-block;
+					padding-left: 5px;
+					&:first-child {
+						padding-left: 0;
+					}
+				}
+			}
+			.blog-short_desc {
+				padding-top: 10px;
+				> p {
+					margin-bottom: 0;
+				}
+			}
+			.hiraola-read-more_area {
+				padding-top: 10px;
+				.hiraola-read_more {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+	.hiraola-paginatoin-area {
+		@include breakpoint (max-medium) {
+			padding-bottom: 57px;
+		}
+		.myniceselect {
+			&.nice-select {
+				span {
+					height: 40px;
+					line-height: 40px;
+					display: inline-block;
+					padding: 0 30px;
+				}
+			}
+		}
+	}
+}
+
+/* ---Latest Blog Two--- */
+.hiraola-blog_area-2 {
+	padding: 80px 0 0;
+	background-color: $body-bg_color;
+	.blog-item {
+		.blog-img {
+			position: relative;
+			.blog-meta-2 {
+				background-color: $bg-white_color;
+				position: absolute;
+				top: 20px;
+				left: 20px;
+				padding: 10px;
+				text-align: center;
+				.blog-time_schedule {
+					> .day {
+						width: 100%;
+						display: block;
+						font-size: 28px;
+						font-weight: $heading-font_weight;
+					}
+				}
+			}
+		}
+		.blog-content {
+			background-color: $bg-white_color;
+			padding: 25px;
+			.blog-heading {
+				padding-top: 0;
+			}
+		}
+	}
+}
+
+/* ---Spaces Between Blog Slider item--- */
+.hiraola-blog_slider {
+	.slick-slide {
+		margin-left: 30px;
+	}
+	.slick-list {
+		margin-left: -30px;
+	}
+}
+
+/* ---Blog Page Style--- */
+
+/* --Search Form--- */
+.hiraola-sidebar-search-form {
+	.hiraola-search-field {
+		width: calc(100% - 50px);
+		border: 1px solid $border-color;
+		padding: 0 10px;
+		font-size: 14px;
+		height: 50px;
+		float: left;
+		text-transform: capitalize;
+	}
+	.hiraola-search-btn {
+		width: 50px;
+		height: 50px;
+		margin-left: -4px;
+		text-align: center;
+		cursor: pointer;
+		background-color: $body-text_color;
+		border: 1px solid $body-text_color;
+		&:hover {
+			background: $primary-color;
+			border-color: $primary-color;
+		}
+		i {
+			font-size: 20px;
+			line-height: 50px;
+			color: $bg-white_color;
+			@extend %basetransition;
+		}
+	}
+}
+/* --Blog Sidebar Other Related Stuff--- */
+.hiraola-blog-sidebar-wrapper {
+	@include breakpoint (max-medium) {
+		padding-bottom: 55px;
+	}
+	.hiraola-blog-sidebar {
+		padding-top: 30px;
+		&:first-child {
+			padding-top: 0;
+		}
+		&:last-child {
+			padding-top: 0;
+		}
+		.hiraola-blog-sidebar-title {
+			font-size: 14px;
+			font-weight: 600;
+			line-height: 20px;
+			text-transform: uppercase;
+			position: relative;
+			margin-bottom: 55px;
+			&:before {
+				width: 55px;
+				height: 2px;
+				bottom: -26px;
+				left: 0;
+				background-color: $primary-color;
+				content: "";
+				position: absolute;
+			}
+		}
+		.hiraola-blog-archive {
+			li {
+				margin-bottom: 10px;
+				a {
+					font-size: 14px;
+				}
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+		.hiraola-recent-post {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			.hiraola-recent-post-thumb {
+				width: 65px;
+				border: 1px solid $border-color;
+				height: 100%;
+				margin-bottom: 30px;
+			}
+			.hiraola-recent-post-des {
+				padding-left: 10px;
+				span {
+					display: block;
+					font-size: 13px;
+					font-weight: 600;
+					text-transform: capitalize;
+					a {
+						&:hover {
+							color: $bg-alizarin_color;
+						}
+					}
+				}
+				.hiraola-post-date {
+					font-size: 13px;
+					font-weight: 400;
+				}
+			}
+		}
+		.hiraola-blog-tags {
+			li {
+				display: inline-block;
+				margin-bottom: 5px;
+				a {
+					font-size: 14px;
+					border: 1px solid $border-color;
+					padding: 5px 15px;
+					display: block;
+					line-height: 20px;
+					&:hover {
+						color: $bg-white_color !important;
+						background-color: $primary-color;
+						border-color: $primary-color;
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---Blog Grid View--- */
+.blog-grid-view_area {
+	padding-bottom: 80px;
+	@include breakpoint (max-medium) {
+		padding-bottom: 75px;
+	}
+	.hiraola-blog-sidebar-wrapper {
+		@include breakpoint (max-medium) {
+			padding-bottom: 0;
+		}
+	}
+	.blog-item_wrap {
+		[class*="col-"] {
+			&:nth-child(-n + 4) {
+				.blog-item {
+					padding-bottom: 30px;
+				}
+			}
+			&:nth-child(-n + 5) {
+				@include breakpoint (max-medium) {
+					.blog-item {
+						padding-bottom: 30px;
+					}
+				}
+			}
+		}
+	}
+	.hiraola-paginatoin-area {
+		.hiraola-pagination-box {
+			@include breakpoint (max-x_small) {
+				display: flex;
+				justify-content: center;
+				padding-bottom: 30px;
+			}
+		}
+		.product-select-box {
+			@include breakpoint (max-x_small) {
+				justify-content: center;
+			}
+		}
+	}
+}
+/* ---Blog List view Item--- */
+.blog-list-view_area {
+	padding-bottom: 80px;
+	.hiraola-blog-sidebar-wrapper {
+		@include breakpoint (max-medium) {
+			padding: 80px 0 0;
+		}
+	}
+	.blog-item_wrap {
+		[class*="col-"] {
+			&:nth-child(-n + 5) {
+				.blog-item {
+					padding-bottom: 30px;
+				}
+			}
+		}
+		.blog-item {
+			.blog-content {
+				height: 100%;
+				border: 1px solid $border-color;
+			}
+		}
+	}
+	.hiraola-paginatoin-area {
+		@include breakpoint (max-medium) {
+			padding-bottom: 0;
+		}
+		.hiraola-pagination-box {
+			@include breakpoint (max-x_small) {
+				display: flex;
+				justify-content: center;
+				padding-bottom: 30px;
+			}
+		}
+		.product-select-box {
+			@include breakpoint (max-x_small) {
+				justify-content: center;
+			}
+		}
+	}
+}
+/* ---Blog Column Three & Four--- */
+.blog-column-three_area,
+.blog-column-two_area {
+	padding-bottom: 75px;
+	.blog-item_wrap {
+		[class*="col-"] {
+			&:nth-child(4) {
+				.blog-item {
+					padding-bottom: 0;
+				}
+			}
+		}
+	}
+	.hiraola-paginatoin-area {
+		@include breakpoint (max-medium) {
+			padding-bottom: 0;
+		}
+		.hiraola-pagination-box {
+			@include breakpoint (max-x_small) {
+				text-align: center;
+				padding-bottom: 30px;
+			}
+		}
+		.product-select-box {
+			@include breakpoint (max-x_small) {
+				justify-content: center;
+			}
+		}
+	}
+	&.blog-column-three_area {
+		.blog-item_wrap {
+			[class*="col-"] {
+				&:nth-child(3) {
+					.blog-item {
+						padding-bottom: 30px;
+					}
+				}
+				.blog-item {
+					@include breakpoint (max-medium) {
+						padding-bottom: 30px;
+					}
+					.blog-content {
+						.blog-heading {
+							h5 {
+								@include breakpoint (normal) {
+									font-size: 17px;
+								}
+							}
+						}
+					}
+				}
+				&:last-child {
+					.blog-item {
+						@include breakpoint (max-medium) {
+							padding-bottom: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Blog List Fullwidth
+.blog-list-fullwidth_area {
+	.blog-item_wrap {
+		.blog-item {
+			.blog-content {
+				height: 100%;
+				display: block;
+			}
+		}
+	}
+}
+
+/* ---Alista's Single Blog Slider Dots--- */
+.hiraola-single-blog_slider {
+	.slick-dots {
+		top: 0;
+		right: 0;
+		left: auto;
+		-webkit-transform: translate(0, 0);
+		transform: translate(0, 0);
+		padding: 0;
+		> li {
+			display: inline-block;
+			margin: 0 3px;
+			cursor: pointer;
+			font-size: 0;
+			width: 10px;
+			height: 10px;
+			background: $bg-wedgewood_color;
+			border: 0;
+			border-radius: 100%;
+			transition: all 300ms ease-in;
+			&.slick-active {
+				background-color: $bg-cello_color;
+			}
+			&:hover {
+				background-color: $bg-cello_color;
+			}
+		}
+	}
+}
+
+/* ---Alista's Blog Details--- */
+.hiraola-blog-details {
+	.blog-item {
+		.blog-content {
+			background-color: transparent;
+			padding: 25px 0;
+		}
+	}
+	.hiraola-blog-blockquote {
+		padding: 0 0 0 40px;
+		blockquote {
+			border: 1px solid $border-color;
+			padding: 40px;
+			position: relative;
+			margin: 30px 0 20px;
+			font-style: italic;
+			background: $white-smoke_color;
+			p {
+				&:before {
+					content: "";
+					background: $primary-color;
+					position: absolute;
+					width: 5px;
+					height: 100%;
+					top: 0;
+					left: 0;
+				}
+			}
+		}
+	}
+	.hiraola-tag-line {
+		padding: 25px 0 25px;
+		margin-top: 25px;
+		border-top: 1px solid $border-color;
+		border-bottom: 1px solid $border-color;
+		h4 {
+			font-size: 18px;
+			font-weight: 600;
+			text-transform: capitalize;
+			display: inline-block;
+			padding-right: 5px;
+		}
+		a {
+			font-style: italic;
+			text-transform: capitalize;
+			@extend %basetransition;
+			font-size: 16px;
+			&:hover {
+				color: $primary-color;
+			}
+		}
+	}
+	.hiraola-social_link {
+		padding-top: 30px;
+		text-align: center;
+		@include breakpoint (xx-small) {
+			text-align: left;
+		}
+	}
+	.hiraola-comment-section {
+		padding-top: 28px;
+		h3 {
+			font-size: 18px;
+			font-weight: 600;
+			padding-bottom: 25px;
+			text-transform: uppercase;
+			margin-bottom: 0;
+		}
+		ul {
+			li {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				padding: 30px 30px 23px;
+				margin-bottom: 30px;
+				border: 1px solid $border-color;
+				@include breakpoint (xx-small) {
+					display: block;
+				}
+				.author-avatar {
+					-ms-flex-preferred-size: 70px;
+					flex-basis: 70px;
+					@include breakpoint (xx-small) {
+						text-align: center;
+						padding-bottom: 20px;
+					}
+				}
+				.comment-body {
+					-ms-flex-preferred-size: 100%;
+					flex-basis: 100%;
+					padding-left: 30px;
+					@include breakpoint (xx-small) {
+						padding-left: 0;
+					}
+					h5 {
+						font-size: 14px;
+						font-weight: 600;
+						padding-bottom: 13px;
+						margin-bottom: 0;
+						text-transform: capitalize;
+						@include breakpoint (xx-small) {
+							padding-bottom: 18px;
+							overflow: hidden;
+							line-height: 26px;
+						}
+					}
+					p {
+						font-size: 14px;
+						max-width: 80%;
+						margin-bottom: 0;
+						@include breakpoint (xx-small) {
+							max-width: 100%;
+						}
+					}
+					.comment-post-date {
+						padding-bottom: 10px;
+						@include breakpoint (xx-small) {
+							padding-bottom: 15px;
+						}
+					}
+					.reply-btn {
+						float: right;
+						a {
+							color: $primary-color;
+							font-size: 12px;
+							display: inline-block;
+							width: 60px;
+							height: 25px;
+							line-height: 21px;
+							text-align: center;
+							-webkit-border-radius: 20px;
+							-moz-border-radius: 20px;
+							border-radius: 20px;
+							text-transform: capitalize;
+							border: 1px solid $primary-color;
+							&:hover {
+								color: $bg-white_color !important;
+								background-color: $primary-color;
+							}
+						}
+					}
+				}
+			}
+			.comment-children {
+				margin-left: 40px;
+			}
+		}
+	}
+	.hiraola-blog-comment-wrapper {
+		padding-bottom: 80px;
+		h3 {
+			font-size: 18px;
+			font-weight: 600;
+			padding: 0 0 26px;
+			text-transform: uppercase;
+			border-bottom: 1px solid $border-color;
+			margin-bottom: 0;
+		}
+		p {
+			padding: 20px 0 0;
+			font-size: 14px;
+		}
+		form {
+			.comment-post-box {
+				label {
+					font-weight: 600;
+					margin-bottom: 25px;
+					display: block;
+					text-transform: capitalize;
+				}
+				.coment-field {
+					background: $white-smoke_color;
+					border: none;
+					padding: 8px 10px;
+					width: 100%;
+				}
+				textarea {
+					height: 130px;
+					margin-bottom: 20px;
+					padding: 10px;
+					width: 100%;
+					background: $white-smoke_color;
+					border: none;
+					font-size: 14px;
+				}
+				.comment-btn_wrap {
+					padding-top: 30px;
+					.hiraola-post-btn_area {
+						.hiraola-post_btn {
+							background-color: $primary-color;
+							color: $bg-white_color;
+							width: 140px;
+							height: 40px;
+							line-height: 37px;
+							display: block;
+							text-align: center;
+							border: 0;
+							cursor: pointer;
+							text-transform: capitalize;
+							@include transition-2;
+							&:hover {
+								background-color: $heading-color;
+								color: $bg-white_color !important;
+							}
+						}
+					}
+				}
+				[class*="col-"] {
+					&:nth-child(-n + 3) {
+						.coment-field {
+							@include breakpoint (max-small) {
+								margin-bottom: 30px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

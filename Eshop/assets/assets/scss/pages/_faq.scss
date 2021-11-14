@@ -1,0 +1,72 @@
+/*----------------------------------------*/
+/*  40 - Pages - FAQ
+/*----------------------------------------*/
+.frequently-area {
+	padding: 80px 0 65px;
+	.frequently-content {
+		.frequently-desc {
+			margin-bottom: 25px;
+			h3 {
+				font-size: 14px;
+				font-weight: 400;
+				text-transform: capitalize;
+			}
+			p {
+				margin: 0;
+				font-size: 14px;
+			}
+		}
+	}
+	.frequently-accordion {
+		.actives {
+			border: 1px solid $primary-color;
+		}
+		.card {
+			border-radius: 0;
+			margin-bottom: 15px;
+		}
+		.card-header {
+			padding: 0;
+			margin-bottom: 0;
+			background-color: $white-smoke_color;
+			border: 0;
+			a {
+				display: block;
+				padding: 15px 10px 15px 25px;
+				cursor: pointer;
+				font-size: 14px;
+				font-weight: 400;
+				text-transform: capitalize;
+				&:hover {
+					color: $primary-color !important;
+				}
+				&.collapsed {
+					&:before {
+						content: "\f067";
+						font-family: 'Font Awesome 5 Free';
+						font-weight: 600;
+						position: absolute;
+						right: 15px;
+						top: 15px;
+						color: $bg-silver_color;
+						@include breakpoint (xx-small) {
+							display: none;
+						}
+					}
+				}
+				&:after {
+					content: "\f068";
+					font-family: 'Font Awesome 5 Free';
+					font-weight: 600;
+					position: absolute;
+					right: 15px;
+					top: 15px;
+					color: $bg-silver_color;
+					@include breakpoint (xx-small) {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}

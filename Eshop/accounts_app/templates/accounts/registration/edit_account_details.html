@@ -1,0 +1,134 @@
+{% extends 'shared/mainLayout.html' %}
+
+{% block title %}
+    DashBoard: Hello {{ request.user.username }}
+{% endblock %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+        {% include 'shared/breadcrumb.html' with title='Dashboard' sub_title='My Account' %}
+        <div class="account-page-area">
+            <div class="container">
+                <div class="row">
+                    {% include 'accounts/registration/dashboard_nav.html' with active_show_detail='active show' %}
+                    <div class="col-lg-9">
+                        <div class="tab-content myaccount-tab-content" id="account-page-tab-content">
+                            <div class="tab-pane fade active show" id="account-details" role="tabpanel"
+                                 aria-labelledby="account-details-tab">
+                                <p class="alert alert-danger">If you do not want to make any
+                                    changes, leave this form
+                                    blank
+
+                                    <i class="close" data-dismiss="alert">X</i>
+                                </p>
+                                <div class="myaccount-details">
+                                    <form action="{% url 'edit-account-detail' %}" class="hiraola-form"
+                                          method="post" enctype="multipart/form-data">
+                                        <div class="align-center">
+                                            <a href="{{ user.profile_image.url }}" target="_blank">
+                                                <img src="{{ user.profile_image.url }}"
+                                                     alt="{{ user.get_full_name }}"
+                                                     style='border-radius: 50%; width: 250px; height: 250px'
+                                                >
+                                            </a>
+                                        </div>
+                                        <br>
+                                        {{ form.profile_image }}
+                                        <br><br><br>
+                                        {% csrf_token %}
+                                        <div class="hiraola-form-inner">
+                                            <div class="single-input single-input-half">
+                                                {{ form.first_name.label }}
+                                                {% if user.first_name is not None %}
+                                                    <span class="badge badge-info">{{ user.first_name }}</span>
+                                                {% else %}
+                                                {% endif %}
+                                                {{ form.first_name }}
+                                                {% for error in form.fist_name.errors %}
+                                                    <p class="alert alert-danger">{{ error }}</p>
+                                                {% endfor %}
+
+                                            </div>
+                                            <div class="single-input single-input-half">
+                                                {{ form.last_name.label }}
+                                                {% if user.last_name is not None %}
+                                                    <span class="badge badge-info">{{ user.last_name }}</span>
+                                                {% else %}
+                                                {% endif %}
+                                                {{ form.last_name }}
+                                                {% for error in form.last_name.errors %}
+                                                    <p class="alert alert-danger">{{ error }}</p>
+                                                {% endfor %}
+                                            </div>
+                                            <div class="single-input">
+                                                {{ form.phone_number.label }}
+                                                {% if user.phone_number is not None %}
+                                                    <span class="badge badge-info">{{ user.phone_number }}</span>
+                                                {% else %}
+                                                {% endif %}
+                                                {{ form.phone_number }}
+                                                {% for error in form.phone_number.errors %}
+                                                    <p class="alert alert-danger">{{ error }}</p>
+                                                {% endfor %}
+
+                                            </div>
+                                            <div class="single-input">
+                                                {{ form.post_code.label }}
+                                                {% if user.post_code is not None %}
+                                                    <span class="badge badge-info">{{ user.post_code }}</span>
+                                                {% else %}
+                                                {% endif %}
+                                                {{ form.post_code }}
+                                                {% for error in form.post_code.errors %}
+                                                    <p class="alert alert-danger">{{ error }}</p>
+                                                {% endfor %}
+
+                                            </div>
+
+                                            <div class="single-input">
+                                                {{ form.address.label }}
+                                                <br>
+                                                {% if user.address is not None %}
+                                                    <span class="badge badge-info">{{ user.address }}</span>
+                                                {% else %}
+                                                {% endif %}
+                                                <br>
+                                                {{ form.address }}
+                                                {% for error in form.address.errors %}
+                                                    <p class="alert alert-danger">{{ error }}</p>
+                                                {% endfor %}
+
+                                            </div>
+
+
+                                            <div class="single-input">
+                                                {{ form.description.label }}
+                                                {% if user.description is not None %}
+                                                    <span class="badge badge-info">{{ user.description }}</span>
+                                                {% else %}
+                                                {% endif %}
+                                                {{ form.description }}
+                                                {% for error in form.description.errors %}
+                                                    <p class="alert alert-danger">{{ error }}</p>
+                                                {% endfor %}
+                                            </div>
+
+
+                                            <div class="single-input">
+                                                <button class="hiraola-btn hiraola-btn_dark" type="submit"><span>SAVE
+                                                    CHANGES</span></button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <p class="alert alert-danger">Your not login in site , First<a class="text-bold"
+                                                                       href="{% url 'login' %}">Login</a></p>
+    {% endif %}
+{% endblock %}

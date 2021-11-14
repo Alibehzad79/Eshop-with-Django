@@ -1,0 +1,195 @@
+{% extends 'shared/mainLayout.html' %}
+
+{% block title %}
+    Checkout and Payed
+{% endblock %}
+
+{% block content %}
+    {% include 'shared/breadcrumb.html' with title='Other' subtitle="Checkout and Payed" %}
+    <div class="checkout-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-12">
+                    <form method="post" action="{% url 'checkout' %}">
+                        {% csrf_token %}
+                        <div class="checkbox-form">
+                            <h3>Billing Details</h3>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list">
+                                        <label>City <span class="required">*</span></label>
+                                        {{ form.city }}
+                                        {% for error in form.city.errors %}
+                                            <p class="alert alert-danger">{{ error }}</p>
+                                        {% endfor %}
+
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list">
+                                        <label>First Name <span class="required">*</span></label>
+                                        {{ form.first_name }}
+                                        {% for error in form.first_name.errors %}
+                                            <p class="alert alert-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list">
+                                        <label>Last Name <span class="required">*</span></label>
+                                        {{ form.last_name }}
+                                        {% for error in form.last_name.errors %}
+                                            <p class="alert alert-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list">
+                                        <label>Address <span class="required">*</span></label>
+                                        {{ form.address }}
+                                        {% for error in form.address.errors %}
+                                            <p class="alert alert-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list">
+                                        <label>Post Code <span class="required">*</span></label>
+                                        {{ form.post_code }}
+                                        {% for error in form.post_code.errors %}
+                                            <p class="alert alert-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list">
+                                        <label>Phone <span class="required">*</span></label>
+                                        {{ form.phone_number }}
+                                        {% for error in form.phone_number.errors %}
+                                            <p class="alert alert-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list">
+                                        <label>Notes</label>
+                                        {{ form.text }}
+                                        {% for error in form.text.errors %}
+                                            <p class="alert alert-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-button-payment">
+                            <button class="hiraola-btn_dark" type="submit">Payed</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-6 col-12">
+                    <div class="your-order">
+                        <h3>Your order</h3>
+                        <div class="your-order-table table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="cart-product-name">Products</th>
+                                    <th class="cart-product-total">Total</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for order in orders %}
+                                    <tr class="cart_item">
+                                        <td class="cart-product-name"> {{ order.product.product_name }}<strong
+                                                class="product-quantity">
+                                            × {{ order.count }}</strong></td>
+                                        <td class="cart-product-total"><span
+                                                class="amount">£{{ order.get_product_amount_price }}</span></td>
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                                <tfoot>
+                                <tr class="order-total">
+                                    <th>Order Total</th>
+                                    <td><strong><span class="amount">£{{ total.amount_user }}</span></strong></td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div class="payment-method">
+                            <div class="payment-accordion">
+                                <div id="accordion">
+                                    <div class="card">
+                                        <div class="card-header" id="#payment-1">
+                                            <h5 class="panel-title">
+                                                <a href="javascript:void(0)" class="" data-toggle="collapse"
+                                                   data-target="#collapseOne" aria-expanded="true"
+                                                   aria-controls="collapseOne">
+                                                    Direct Bank Transfer.
+                                                </a>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p>Make your payment directly into our bank account. Please use your
+                                                    Order
+                                                    ID as the payment
+                                                    reference. Your order won’t be shipped until the funds have cleared
+                                                    in
+                                                    our account.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="#payment-2">
+                                            <h5 class="panel-title">
+                                                <a href="javascript:void(0)" class="collapsed" data-toggle="collapse"
+                                                   data-target="#collapseTwo" aria-expanded="false"
+                                                   aria-controls="collapseTwo">
+                                                    Cheque Payment
+                                                </a>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p>Make your payment directly into our bank account. Please use your
+                                                    Order
+                                                    ID as the payment
+                                                    reference. Your order won’t be shipped until the funds have cleared
+                                                    in
+                                                    our account.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="#payment-3">
+                                            <h5 class="panel-title">
+                                                <a href="javascript:void(0)" class="collapsed" data-toggle="collapse"
+                                                   data-target="#collapseThree" aria-expanded="false"
+                                                   aria-controls="collapseThree">
+                                                    PayPal
+                                                </a>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseThree" class="collapse" data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p>Make your payment directly into our bank account. Please use your
+                                                    Order
+                                                    ID as the payment
+                                                    reference. Your order won’t be shipped until the funds have cleared
+                                                    in
+                                                    our account.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

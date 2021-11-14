@@ -1,0 +1,177 @@
+/*----------------------------------------*/
+/*  25 - Section - Footer
+/*----------------------------------------*/
+.hiraola-footer_area {
+	background-color: #f7f7f7;
+	.footer-top_area {
+		padding: 80px 0 80px;
+		@include breakpoint (max-small) {
+			padding: 60px 0 45px;
+		}
+		.footer-widgets_info {
+			.footer-widgets_logo {
+				padding-bottom: 25px;
+			}
+			.widget-short_desc {
+				> p {
+					margin-bottom: 0;
+				}
+			}
+			.widgets-essential_stuff {
+				> ul {
+					> li {
+						padding-bottom: 15px;
+						&:last-child {
+							padding-bottom: 0;
+						}
+						> i {
+							font-size: 21px;
+							padding-right: 10px;
+							// color: $primary-color;
+							vertical-align: middle;
+						}
+					}
+				}
+			}
+		}
+		.footer-widgets_title {
+			h6 {
+				text-transform: uppercase;
+				padding-bottom: 20px;
+				font-size: 16px;
+				margin-bottom: 0;
+				@include breakpoint (max-medium) {
+					padding-top: 25px;
+				}
+			}
+		}
+		.short-desc {
+			> p {
+				margin-bottom: 0;
+				padding-bottom: 20px;
+			}
+		}
+		.footer-widgets {
+			> ul {
+				> li {
+					padding-bottom: 10px;
+					&:last-child {
+						padding-bottom: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---Instafeed--- */
+.instagram-container {
+	position: relative;
+	overflow: hidden;
+}
+#Instafeed {
+	> li {
+		list-style: none;
+		float: left;
+		width: 33.33%;
+		padding: 0 7.5px;
+		margin-bottom: 15px;
+		&:last-child {
+			margin-bottom: 0;
+		}
+		> a {
+			display: block;
+			@extend %basetransition;
+			position: relative;
+			&:before {
+				position: absolute;
+				top: 15px;
+				left: 15px;
+				right: 15px;
+				bottom: 15px;
+				content: "";
+				background: rgba(0, 0, 0, .5);
+				-webkit-transform: scale3d(1.2, 1.2, 1.2);
+				transform: scale3d(1.2, 1.2, 1.2);
+				opacity: 0;
+				@extend %basetransition;
+				-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+			}
+			&:after {
+				content: "";
+				background-image: url("../images/insta-icon/1.png");
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translateY(-50%);
+				width: 24px;
+				height: 24px;
+				margin-left: -12px;
+				margin-right: -12px;
+				@extend %basetransition;
+				opacity: 0;
+				-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+				z-index: 20;
+			}
+			img {
+				width: 100%;
+			}
+		}
+		&:hover {
+			> a {
+				&:before {
+					-webkit-transform: scale3d(1, 1, 1);
+					transform: scale3d(1, 1, 1);
+					opacity: 1;
+					-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+				}
+				&:after {
+					opacity: 1;
+					-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+					-webkit-animation: zoomIn 500ms ease-in-out;
+					animation: zoomIn 500ms ease-in-out;
+				}
+			}
+		}
+	}
+}
+
+/* ---Footer Bottom--- */
+.footer-bottom_area {
+	.footer-bottom_nav {
+		border-top: 1px solid $border-color;
+		padding: 30px 0 35px;
+
+		/*Footer Static Bottom*/
+		.footer-links {
+			padding: 0 40px 20px;
+		}
+		.footer-links > ul {
+			text-align: center;
+		}
+		.footer-links > ul > li {
+			display: inline-block;
+			position: relative;
+		}
+		.footer-links > ul > li > a {
+			color: #888;
+			line-height: 24px;
+			letter-spacing: 0.3px;
+		}
+		.footer-links > ul > li::after {
+			content: "/";
+			color: #888;
+		}
+		.footer-links > ul > li > a:hover {
+			color: #242424;
+			text-decoration: underline;
+		}
+		.payment {
+			text-align: center;
+		}
+		.copyright {
+			padding-top: 25px;
+			text-align: center;
+		}
+	}
+}

@@ -1,0 +1,69 @@
+{% extends 'shared/mainLayout.html' %}
+
+{% block title %}
+    Login in Site
+{% endblock %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <div class="center">
+            <br>
+            <p class="alert alert-success text-center">Your already Login</p>
+        </div>
+
+    {% else %}
+        {% include 'shared/breadcrumb.html' with title='Other' sub_title='Login' %}
+        <div class="hiraola-login-register_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6">
+                        <!-- Login Form s-->
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="login-form">
+                                <h4 class="login-title">Login</h4>
+                                <div class="row">
+                                    <div class="col-md-12 col-12">
+                                        <label>{{ form.username.label }}</label>
+                                        {{ form.username }}
+
+                                    </div>
+                                    <div class="col-12 mb--20">
+                                        <label>Password</label>
+                                        {{ form.password }}
+
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="check-box">
+                                            <input type="checkbox" id="remember_me">
+                                            <label for="remember_me">Remember me</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="forgotton-password_info">
+                                            <a href="{% url 'password_reset' %}"> Forgotten pasward?</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button type="submit" class="hiraola-login_btn">Login</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <br>
+                        <div class="login-form">
+                            <h4 class="login-title">You haven't account?</h4>
+                            <p> 👇👇 </p>
+                            <div class="col-md-12">
+                                <a href="{% url 'register' %}">
+                                    <button type="button" class="hiraola-login_btn">SignUp</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+{% endblock %}

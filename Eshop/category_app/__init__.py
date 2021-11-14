@@ -1,0 +1,1 @@
+default_app_cpnfig = 'category_app.apps.CategoryAppConfig'

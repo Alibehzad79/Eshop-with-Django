@@ -1,0 +1,114 @@
+/*----------------------------------------*/
+/*  38 - Pages - Contact
+/*----------------------------------------*/
+/* ---Google Map Related Stuff--- */
+#google-map {
+	height: 400px;
+}
+/* ---Contact Main Page--- */
+.contact-main-page {
+	padding: 80px 0 60px;
+	.contact-page-side-content {
+		background-color: $white-smoke_color;
+		padding: 30px 30px 19px;
+		margin-top: 60px;
+		@include breakpoint (xx-small) {
+			padding: 25px 30px 19px;
+		}
+		.contact-page-message {
+			margin-bottom: 0;
+			padding-bottom: 25px;
+		}
+		.single-contact-block {
+			padding-bottom: 3px;
+			margin-bottom: 27px;
+			border-bottom: 1px solid $border-color;
+			&:last-child {
+				border-bottom: none;
+			}
+			h4 {
+				margin-bottom: 0;
+				padding-bottom: 25px;
+			}
+			p {
+				margin-bottom: 0;
+				padding-bottom: 20px;
+			}
+			&.last-child {
+				> h4 {
+					padding-bottom: 20px;
+				}
+			}
+		}
+	}
+	.contact-page-title {
+		font-size: 32px;
+		line-height: 32px;
+		font-weight: 500;
+		margin-bottom: 0;
+		padding-bottom: 20px;
+		@include breakpoint (xx-small) {
+			font-size: 25px;
+		}
+	}
+	/* ---Contact Form Area--- */
+	.contact-form-content {
+		margin-top: 60px;
+		.contact-form {
+			.form-group {
+				margin-bottom: 20px;
+				&.form-group-2 {
+					margin-bottom: 25px;
+				}
+				label {
+					display: block;
+					font-size: 15px;
+					line-height: 29px;
+					font-weight: 400;
+					margin-bottom: 20px;
+					cursor: text;
+					span,
+					&.required {
+						color: $bg-red_color;
+					}
+				}
+				input {
+					background-color: $bg-white_color;
+					width: 100%;
+					height: 50px;
+					line-height: 50px;
+					outline: none;
+					border: 1px solid $border-color;
+					padding-left: 20px;
+				}
+				textarea {
+					background-color: $bg-white_color;
+					width: 100%;
+					outline: none;
+					border: 1px solid $border-color;
+					padding-left: 20px;
+					line-height: 50px;
+					height: 200px;
+				}
+				.alsita-contact-form_btn {
+					line-height: 12px;
+					display: inline-block;
+					padding: 16px 30px;
+					border-radius: 3px;
+					font-weight: 500;
+					font-size: 12px;
+					background-color: $body-text_color;
+					border: 1px solid $body-text_color;
+					color: $bg-white_color;
+					text-transform: uppercase;
+					@extend %basetransition;
+					&:hover {
+						background-color: $primary-color;
+						color: $bg-white_color;
+						border-color: $primary-color;
+					}
+				}
+			}
+		}
+	}
+}

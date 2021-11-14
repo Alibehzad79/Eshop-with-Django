@@ -1,0 +1,182 @@
+{% extends "shared/mainLayout.html" %}
+{% load render_partial %}
+{% block title %}
+    {{ article.title }}
+{% endblock %}
+{% block content %}
+    {% include "shared/breadcrumb.html" with title=article.title sub_title="Blog Detail" %}
+    <div class="hiraola-blog_area hiraola-blog_area-2 hiraola-blog-details hiraola-banner_area">
+        <div class="container">
+            <div class="row">
+                {% render_partial "blog_app.views.blog_slider_bar" %}
+                <div class="col-lg-9 order-lg-2 order-1">
+                    <div class="blog-item">
+                        <div class="blog-img img-hover_effect">
+                            <a href="{% url 'blog_detail' article.id article.title_in_url %}">
+                                <img src="{{ article.image.url }}" alt="{{ article.image_alt }}">
+                            </a>
+                            <div class="blog-meta-2">
+                                <div class="blog-time_schedule">
+                                    <span class="day">{{ article.date_created.day }}</span>
+                                    <span class="month">{{ article.get_time_str }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-heading">
+                                <i class="fa fa-eye"> {{ article.visit_count }} </i>
+                                <br><br>
+                                <h5>
+                                    <a href="{% url 'blog_detail' article.id article.title_in_url %}">{{ article.title }}</a>
+                                </h5>
+                            </div>
+                            <div class="blog-short_desc">
+                                <p>{{ article.content|safe }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hiraola-tag-line">
+                            <h4>Category:</h4>
+                            {% for category in categories %}
+                                <a href="{% url 'blog_category_mother' category.category.category.slug %}">{{ category.category.category.name }}</a>
+                                /
+                                <a href="{% url 'blog_category_child' category.category.category.slug category.category.slug %}">{{ category.category.name }}</a>
+                                ,
+                            {% endfor %}
+
+                        </div>
+                        <div class="hiraola-tag-line">
+                            <h4>Tag:</h4>
+                            {% for tag in article.tag_set.all %}
+                                <a href="{% url 'blog_tag' tag.slug %}">{{ tag.name }}</a>,
+                            {% endfor %}
+
+                        </div>
+                        <div class="hiraola-social_link">
+                            <ul>
+                                <li class="facebook">
+                                    <a href="https://www.facebook.com" data-toggle="tooltip" target="_blank" title=""
+                                       data-original-title="Facebook">
+                                        <i class="fab fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li class="twitter">
+                                    <a href="https://twitter.com" data-toggle="tooltip" target="_blank" title=""
+                                       data-original-title="Twitter">
+                                        <i class="fab fa-twitter-square"></i>
+                                    </a>
+                                </li>
+                                <li class="google-plus">
+                                    <a href="https://www.plus.google.com/discover" data-toggle="tooltip" target="_blank"
+                                       title="" data-original-title="Google Plus">
+                                        <i class="fab fa-google-plus"></i>
+                                    </a>
+                                </li>
+                                <li class="instagram">
+                                    <a href="https://rss.com" data-toggle="tooltip" target="_blank" title=""
+                                       data-original-title="Instagram">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="hiraola-blog-comment-wrapper">
+                            <h3>Send Comment</h3>
+                            {% if request.user.is_authenticated %}
+                                <form method="post">
+                                    {% csrf_token %}
+                                    {{ form.blog_id }}
+                                    <div class="comment-post-box">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                {{ form.text.label }}
+                                                {{ form.text }}
+                                            </div>
+                                            <div class="col-lg-4 col-md-4">
+                                                {{ form.name.label }}
+                                                {{ form.name }}
+                                                {% for error in form.name.errors %}
+                                                    <p class="alert alert-danger">{{ error }}</p>
+                                                {% endfor %}
+
+                                            </div>
+                                            <div class="col-lg-4 col-md-4">
+                                                {{ form.email.label }}
+                                                {{ form.email }}
+                                                {% for error in form.email.errors %}
+                                                    <p class="alert alert-danger">{{ error }}</p>
+                                                {% endfor %}
+                                            </div>
+
+                                            <div class="col-lg-12">
+                                                <div class="comment-btn_wrap f-left">
+                                                    <div class="hiraola-post-btn_area">
+                                                        <button type="submit" class="hiraola-post_btn">
+                                                            Post
+                                                            comment
+                                                        </button>
+                                                    </div>
+                                                    <!-- <input class="hiraola-post_btn" type="submit" name="submit" value="post comment"> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            {% else %}
+                                <p class="text-dark" style="font-size: 20px">Please First <a class="text-light badge badge-success p-3 ml-4" style="font-size: 30px" href="{% url 'login' %}">Login</a>
+                                </p>
+                            {% endif %}
+                            <br>
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <p class="alert alert-success text-center text-bold">{{ message }}<br></p>
+                                {% endfor %}
+                            {% endif %}
+                            <br>
+                        </div>
+                        <div class="hiraola-comment-section">
+                            <h3>{{ comments.count }} comment</h3>
+                            {% if comments %}
+                                <ul>
+                                    {% for comment in comments %}
+                                        <li>
+                                            <div class="author-avatar">
+                                                <img src="{{ comment.user.profile_image.url }}" alt="User profile">
+                                            </div>
+                                            <div class="comment-body">
+                                                {% if request.user.is_superuser %}
+                                                    <span class="reply-btn"><a
+                                                            href="{% url 'comment_delete' comment.id article.id %}">Delete</a></span>
+                                                {% endif %}
+                                                <h5 class="comment-author">{{ comment.name }}</h5>
+                                                <div class="comment-post-date">
+                                                    {{ comment.date_send|date }}
+                                                </div>
+                                                <p>{{ comment.text|safe }}</p>
+                                            </div>
+                                        </li>
+                                        {% if comment.answer %}
+                                            <li class="comment-children">
+                                                <div class="author-avatar">
+                                                    <img style="border-radius: 5px" src="{{ article.creator.profile_image.url }}"
+                                                         alt="User profile">
+                                                </div>
+                                                <div class="comment-body">
+                                                    <h5 class="comment-author">Answer</h5>
+                                                    <p>{{ comment.answer|safe }}</p>
+                                                </div>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p class="alert alert-info">There are no comments for this {{ article.title }}</p>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

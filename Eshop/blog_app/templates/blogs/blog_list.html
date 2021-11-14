@@ -1,0 +1,91 @@
+{% extends 'shared/mainLayout.html' %}
+{% load render_partial %}
+{% block title %}
+    Blog: Article List
+{% endblock %}
+
+{% block content %}
+    {% include "shared/breadcrumb.html" with title="Article List" sub_title="Blog > Article List" %}
+    <div class="hiraola-blog_area hiraola-blog_area-2 blog-grid-view_area">
+        <div class="container">
+            <div class="row">
+                {% render_partial 'blog_app.views.blog_slider_bar' %}
+                <div class="col-lg-9 order-lg-2 order-1">
+                    <div class="row blog-item_wrap">
+                        {% if object_list %}
+                            {% for article in object_list %}
+                                <div class="col-lg-6">
+                                    <div class="blog-item">
+                                        <div class="blog-img img-hover_effect">
+                                            <a href="{% url 'blog_detail' article.id article.title_in_url %}">
+                                                <img src="{{ article.image.url }}" alt="{{ article.image_alt }}">
+                                            </a>
+                                            <div class="blog-meta-2">
+                                                <div class="blog-time_schedule">
+                                                    <span class="day">{{ article.date_created.day }}</span>
+                                                    <span class="month">{{ article.get_time_str }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="blog-content">
+                                            <div class="blog-heading">
+                                                <i class="fa fa-eye"> {{ article.visit_count }} </i>
+                                                <br><br>
+                                                <h5>
+                                                    <a href="{% url 'blog_detail' article.id article.title_in_url %}">{{ article.title }}</a>
+                                                </h5>
+                                            </div>
+                                            <div class="blog-short_desc">
+                                                <p>{{ article.content|safe|truncatechars:250 }}
+                                                </p>
+                                            </div>
+                                            <div class="hiraola-read-more_area">
+                                                <a href="{% url 'blog_detail' article.id article.title_in_url %}"
+                                                   class="hiraola-read_more">Read
+                                                    More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p class="alert alert-danger text-center container">Blog not found</p>
+                        {% endif %}
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="hiraola-paginatoin-area">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <ul class="hiraola-pagination-box">
+                                            <li>
+                                                {% if page_obj.has_previous %}
+                                                    <a class="Previous"
+                                                       href="?page={{ page_obj.previous_page_number }}"><i
+                                                            class="ion-ios-arrow-left"></i></a>
+                                                {% endif %}
+                                            </li>
+                                            {% for page in paginator.page_range %}
+                                                {% if page == page_obj.number %}
+                                                    <li class="active"><a href="?page={{ page }}">{{ page }}</a></li>
+                                                {% else %}
+                                                    <li><a href="?page={{ page }}">{{ page }}</a></li>
+                                                {% endif %}
+                                            {% endfor %}
+                                            <li>
+                                                {% if page_obj.has_next %}
+                                                    <a class="Next" href="?page={{ page_obj.next_page_number }}"><i
+                                                            class="ion-ios-arrow-right"></i></a></li>
+                                                {% endif %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

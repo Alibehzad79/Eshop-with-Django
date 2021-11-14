@@ -1,0 +1,285 @@
+{% load static %}
+{% block favicon %}
+    <link rel="shortcut icon" type="image/x-icon" href="{{ setting.logo.url }}">
+{% endblock favicon %}
+
+<header class="header-main_area">
+    <div class="header-top_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="ht-left_area">
+                        <div class="header-shipping_area">
+                            <ul>
+                                <li>
+                                    <span>Telephone Enquiry:</span>
+                                    {% for phone in setting.phones_set.all %}
+                                        <a href="tel://{{ phone.telephone }}">{{ phone.telephone }}</a>
+                                        {% if forloop.last %}{% else %} - {% endif %}
+                                    {% endfor %}
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="ht-right_area">
+                        <div class="ht-menu">
+                            <ul>
+
+                                <li><a href="javascript:void(0)">Language <i class="fa fa-chevron-down"></i></a>
+                                    <ul class="ht-dropdown">
+                                        <li class="active"><a href="javascript:void(0)"><img
+                                                src="{% static 'assets/images/menu/icon/1.jpg' %}"
+                                                alt="JB's Language Icon">English</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="javascript:void(0)">My Account<i class="fa fa-chevron-down"></i></a>
+                                    <ul class="ht-dropdown ht-my_account">
+                                        {% if request.user.is_authenticated %}
+                                            <li><a href="{% url 'dashboard' %}">My Profile</a></li>
+                                            <li><a href="{% url 'cart' %}">My Cart</a></li>
+                                            <li class="active"><a href="{% url 'logout' %}">Logout</a></li>
+                                        {% else %}
+                                            <li><a href="{% url 'register' %}">Register</a></li>
+                                            <li class="active"><a href="{% url 'login' %}">Login</a></li>
+                                        {% endif %}
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-middle_area d-none d-lg-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="header-logo">
+                        <a href="/">
+                            <img src="{{ setting.logo.url }}" width="121" height="37" alt="{{ setting.site_name }}">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="hm-form_area">
+                        <form action="{% url 'search-product' %}" class="hm-searchbox">
+                            <input type="text" name="query" value="{{ request.GET.query }}"
+                                   placeholder="Search for products...">
+                            <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-bottom_area header-sticky stick">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 d-lg-none d-block">
+                    <div class="header-logo">
+                        <a href="/">
+                            <img src="{{ setting.logo.url }}" alt="{{ setting.site_name }}">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-9 d-none d-lg-block position-static">
+                    <div class="main-menu_area">
+                        <nav>
+                            <ul>
+                                <li class="dropdown-holder"><a href="{% url 'home' %}">Home</a></li>
+                                <li class="megamenu-holder"><a href="{% url 'product_list' %}">Shop</a></li>
+                                <li><a href="{% url 'blog_list' %}">Blog</a></li>
+                                <li><a href="{% url 'about-us' %}">About Us</a></li>
+                                <li><a href="{% url 'contact-us' %}">Contact</a>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-8 col-sm-8">
+                    <div class="header-right_area">
+                        <ul>
+                            <li>
+                                <a href="{% url 'wishlist' %}" class="wishlist-btn">
+                                    <i class="ion-android-favorite-outline"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#mobileMenu"
+                                   class="mobile-menu_btn toolbar-btn color--white d-lg-none d-block">
+                                    <i class="ion-navicon"></i>
+                                </a>
+                            </li>
+                            {% if request.user.is_authenticated %}
+                                <li>
+                                    <a href="#miniCart" class="minicart-btn toolbar-btn">
+                                        <i class="ion-bag"></i>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if request.user.is_authenticated %}
+        <div class="offcanvas-minicart_wrapper" id="miniCart">
+            <div class="offcanvas-menu-inner">
+                <a href="#" class="btn-close"><i class="ion-android-close"></i></a>
+                {% if orders %}
+                    <div class="minicart-content">
+                        <div class="minicart-heading">
+                            <h4>Shopping Cart</h4>
+                        </div>
+                        <ul class="minicart-list">
+                            {% for order in orders %}
+                                <li class="minicart-product">
+                                    <a class="product-item_remove" href="javascript:void(0)"><i
+                                            class="ion-android-close"></i></a>
+                                    <div class="product-item_img">
+                                        <a href="{% url 'product_detail' order.product.id order.product.product_name_in_url %}">
+                                            <img src="{{ order.product.image.url }}"
+                                                 alt="{{ order.product.product_name }}">
+                                        </a>
+                                    </div>
+                                    <div class="product-item_content">
+                                        <a class="product-item_title"
+                                           href="{% url 'product_detail' order.product.id order.product.product_name_in_url %}">{{ order.product.product_name }}</a>
+                                        <span class="product-item_quantity">{{ order.count }} x ${{ order.get_price }}</span>
+                                        {% if order.price_discount is not None %}
+                                            <span class="badge badge-success">
+                                        {{ order.price_discount }}% off
+                                     </span>
+                                        {% endif %}
+                                    </div>
+                                </li>
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+                    <div class="minicart-item_total">
+
+                    </div>
+                    <div class="minicart-btn_area">
+                        <a href="{% url 'cart' %}"
+                           class="hiraola-btn hiraola-btn_dark hiraola-btn_fullwidth">Minicart</a>
+                    </div>
+                    <div class="minicart-btn_area">
+                        <a href="checkout.html" class="hiraola-btn hiraola-btn_dark hiraola-btn_fullwidth">Checkout</a>
+                    </div>
+                {% else %}
+                    <p class="alert alert-danger">Your Cart is Empty</p>
+                {% endif %}
+
+            </div>
+        </div>
+    {% endif %}
+    <div class="mobile-menu_wrapper" id="mobileMenu">
+        <div class="offcanvas-menu-inner">
+            <div class="container">
+                <a href="#" class="btn-close"><i class="ion-android-close"></i></a>
+                <div class="offcanvas-inner_search">
+                    <form action="{% url 'search-product' %}" class="hm-searchbox">
+                        <input type="text" placeholder="Search for products..." name="query"
+                               value="{{ request.GET.query }}">
+                        <button class="search_btn" type="submit"><i class="ion-ios-search-strong"></i></button>
+                    </form>
+                </div>
+                <nav class="offcanvas-navigation">
+                    <ul class="mobile-menu">
+                        <li class="menu-item-has-children active"><a href="/"><span
+                                class="mm-text">Home</span></a>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="{% url 'product_list' %}">
+                                <span class="mm-text">Shop</span>
+                            </a>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="{% url 'blog_list' %}">
+                                <span class="mm-text">Blog</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="offcanvas-navigation user-setting_area">
+                    <ul class="mobile-menu">
+                        <li class="menu-item-has-children active"><a href="javascript:void(0)"><span
+                                class="mm-text">User
+                                    Setting</span></a>
+                            <ul class="sub-menu">
+                                {% if request.user.is_authenticated %}
+                                    <li>
+                                        <a href="{% url 'dashboard' %}">
+                                            <span class="mm-text">My Account</span>
+                                        </a>
+                                        <a href="{% url 'cart' %}">
+                                            <span class="mm-text">My Cart</span>
+                                        </a>
+                                        <a href="{% url 'logout' %}">
+                                            <span class="mm-text">Logout</span>
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <li>
+                                        <a href="{% url 'login' %}">
+                                            <span class="mm-text">Login</span>
+                                        </a>
+                                        <a href="{% url 'register' %}">
+                                            <span class="mm-text">Register</span>
+                                        </a>
+                                    </li>
+                                {% endif %}
+
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children"><a href="javascript:void(0)"><span
+                                class="mm-text">Currency</span></a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <span class="mm-text">EUR €</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <span class="mm-text">USD $</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children"><a href="javascript:void(0)"><span
+                                class="mm-text">Language</span></a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <span class="mm-text">English</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <span class="mm-text">Français</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <span class="mm-text">Romanian</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <span class="mm-text">Japanese</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>

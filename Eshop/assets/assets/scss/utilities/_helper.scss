@@ -1,0 +1,723 @@
+/*----------------------------------------*/
+/*  03 - Utilities - Helper
+/*----------------------------------------*/
+/* ---Hiraola's Custom Column--- */
+.grid-full {
+	flex: 0 0 62.8%;
+	max-width: 62.8%;
+	@include breakpoint (max-large) {
+		flex: 0 0 55%;
+		max-width: 55%;
+	}
+	@include breakpoint (normal) {
+		flex: 0 0 50%;
+		max-width: 50%;
+	}
+	@include breakpoint (medium) {
+		flex: 0 0 100%;
+		max-width: 100%;
+	}
+	@include breakpoint (max-small) {
+		flex: 0 0 100%;
+		max-width: 100%;
+	}
+}
+.grid-half {
+	flex: 0 0 18.6%;
+	max-width: 18.6%;
+	@include breakpoint (max-large) {
+		flex: 0 0 22.5%;
+		max-width: 22.5%;
+	}
+	@include breakpoint (normal) {
+		flex: 0 0 25%;
+		max-width: 25%;
+	}
+	@include breakpoint (medium) {
+		flex: 0 0 55%;
+		max-width: 55%;
+		padding-top: 30px;
+	}
+	@include breakpoint (max-small) {
+		flex: 0 0 100%;
+		max-width: 100%;
+	}
+	&.grid-md_half {
+		@include breakpoint (medium) {
+			flex: 0 0 45%;
+			max-width: 45%;
+			padding-top: 30px;
+		}
+		@include breakpoint (max-small) {
+			padding-top: 30px;
+			flex: 0 0 100%;
+			max-width: 100%;
+		}
+	}
+	.category-menu {
+		.category-menu-list {
+			@include breakpoint (medium) {
+				display: block !important;
+			}
+		}
+	}
+}
+/* ---Hiraola's Preloader---*/
+.loading {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: $bg-black_color;
+	z-index: 9999999999999;
+	.middle {
+		position: absolute;
+		top: 50%;
+		width: 100%;
+		.lds-ellipsis {
+			display: inline-block;
+			position: relative;
+			width: 64px;
+			height: 64px;
+			div {
+				position: absolute;
+				top: 27px;
+				width: 11px;
+				height: 11px;
+				border-radius: 50%;
+				background: $primary-color;
+				animation-timing-function: cubic-bezier(0, 1, 1, 0);
+				&:nth-child(1) {
+					left: 6px;
+					animation: lds-ellipsis1 0.6s infinite;
+				}
+				&:nth-child(2) {
+					left: 6px;
+					animation: lds-ellipsis2 0.6s infinite;
+				}
+				&:nth-child(3) {
+					left: 26px;
+					animation: lds-ellipsis2 0.6s infinite;
+				}
+				&:nth-child(4) {
+					left: 45px;
+					animation: lds-ellipsis3 0.6s infinite;
+				}
+			}
+		}
+	}
+}
+
+@keyframes lds-ellipsis1 {
+	0% {
+		transform: scale(0);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+@keyframes lds-ellipsis3 {
+	0% {
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(0);
+	}
+}
+@keyframes lds-ellipsis2 {
+	0% {
+		transform: translate(0, 0);
+	}
+	100% {
+		transform: translate(19px, 0);
+	}
+}
+/* ---Hiraola's Product Sticker---*/
+.sticker,
+.sticker-2 {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	width: 45px;
+	height: 20px;
+	line-height: 18px;
+	font-size: 11px;
+	text-transform: uppercase;
+	text-align: center;
+	background: $primary-color;
+	color: $bg-white_color;
+	text-transform: uppercase;
+	&:before {
+		content: "";
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 4px 4px 0 4px;
+		border-color: $primary-color transparent transparent transparent;
+		left: 9px;
+		top: 100%;
+		position: absolute;
+	}
+}
+.sticker-2 {
+	background: $bg-orange-red_color;
+	right: 20px;
+	left: auto;
+	&:before {
+		border-color: $bg-orange-red_color transparent transparent transparent;
+	}
+}
+
+/* ---Hiraola's Section Title--- */
+.hiraola-section_title {
+	text-align: left;
+	border-bottom: 1px solid $border-color;
+	> h4 {
+		position: relative;
+		margin-bottom: 0;
+		text-transform: uppercase;
+		padding-bottom: 25px;
+		&:before {
+			content: "";
+			background-color: $primary-color;
+			height: 1px;
+			width: 160px;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+	}
+}
+
+/* ---Hiraola's Spacing Between Slide Item & Other Related Stuff---*/
+.slick-list {
+	margin-left: -30px;
+	.slick-slide {
+		margin-left: 30px;
+		outline: none;
+	}
+}
+
+/* ---Only For Single Product Page | Spacing Between Slide Item--- */
+.sp-images {
+	.slick-list {
+		margin-left: 0;
+		.slick-slide {
+			margin-left: 0;
+		}
+	}
+}
+
+/* ---Hiraola's Spacing Between Two Row---*/
+.hiraola-product_slider,
+.hiraola-product-tab_slider-3 {
+	.slick-slide div:first-child .slide-item {
+		margin-bottom: 30px;
+	}
+}
+
+/* ---Tab Content & Pane Fix--- */
+.tab-content {
+	width: 100%;
+	.tab-pane {
+		display: block;
+		height: 0;
+		max-width: 100%;
+		visibility: hidden;
+		overflow: hidden;
+		opacity: 0;
+		&.active {
+			height: auto;
+			visibility: visible;
+			opacity: 1;
+			overflow: visible;
+		}
+	}
+}
+
+/* ---Hiraola's Rating Box Empty Star Color--- */
+.rating-box {
+	> ul {
+		> li {
+			&.silver-color {
+				> i {
+					color: $bg-silver_color !important;
+				}
+			}
+		}
+	}
+}
+
+/* ---Hiraola's Global Overlay--- */
+.global-overlay {
+	background-color: rgba($heading-color, .9);
+	@extend %basetransition;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	z-index: 1000;
+	visibility: hidden;
+	&.overlay-open {
+		visibility: visible;
+	}
+}
+
+/* ---Hiraola's ScrollUp--- */
+#scrollUp {
+	right: 15px;
+	bottom: 15px;
+	height: 50px;
+	width: 50px;
+	line-height: 50px;
+	text-align: center;
+	overflow: hidden;
+	text-transform: uppercase;
+	border-radius: $hiraola-border_radius;
+	z-index: 1000 !important;
+	&:hover {
+		> i {
+			animation: alisSlideInUp 1s infinite;
+		}
+	}
+}
+
+/* ---Hiraola's Tooltip--- */
+.tooltip-inner {
+	max-width: 200px;
+	padding: 3px 8px;
+	color: #fff;
+	text-align: center;
+	border-radius: .25rem;
+}
+.tooltip.bs-tooltip-auto[x-placement^=top] .arrow::before,
+.tooltip.bs-tooltip-top .arrow::before {
+	content: "";
+	border-width: 5px 5px 0;
+}
+
+/* ---Hiraola's Pagination--- */
+.hiraola-paginatoin-area {
+	padding-top: 30px;
+	.hiraola-pagination-box {
+		li {
+			display: inline-block;
+			&.active {
+				> a {
+					background-color: $primary-color;
+					color: $bg-white_color !important;
+				}
+			}
+			> a {
+				border: 1px solid $border-color;
+				padding: 9px 15px;
+				display: block;
+			}
+			&:hover {
+				> a {
+					background-color: $primary-color;
+					color: $bg-white_color !important;
+				}
+			}
+		}
+	}
+	.product-select-box {
+		display: flex;
+		justify-content: flex-end;
+		.product-short {
+			display: flex;
+			align-items: center;
+			> p {
+				all: inherit;
+				padding-right: 15px;
+			}
+			> span {
+				padding-left: 15px;
+			}
+		}
+	}
+}
+
+/* ---Hiraola's Quantity--- */
+.quantity {
+	.cart-plus-minus {
+		position: relative;
+		width: 76px;
+		text-align: left;
+		> .cart-plus-minus-box {
+			border: 1px solid $border-color;
+			height: 46px;
+			text-align: center;
+			width: 48px;
+			background: $bg-white_color;
+		}
+		> .qtybutton {
+			border-bottom: 1px solid $border-color;
+			border-right: 1px solid $border-color;
+			border-top: 1px solid $border-color;
+			cursor: pointer;
+			height: 23px;
+			line-height: 20px;
+			position: absolute;
+			text-align: center;
+			@extend %basetransition;
+			width: 28px;
+			line-height: 21px;
+			&:hover {
+				background: $bg-whisper_color;
+			}
+			&.dec {
+				bottom: 0;
+				right: 0;
+			}
+			&.inc {
+				border-bottom: none;
+				top: 0;
+				right: 0;
+			}
+		}
+	}
+}
+
+/* ---Hiraola's  Nice Select Customization--- */
+.myniceselect {
+	&.nice-select {
+		padding: 0;
+		margin: 0;
+		height: auto;
+		line-height: auto;
+		span {
+			height: 30px;
+			line-height: 30px;
+			display: inline-block;
+			padding: 0 60px;
+		}
+		.list {
+			width: 100%;
+		}
+	}
+}
+
+/* ---Base Transition--- */
+%basetransition {
+	@include transition(all .3s ease-in);
+}
+
+/* ---Range Slider--- */
+.price-filter {
+	padding-top: 35px;
+	.ui-widget-content {
+		background-color: $border-color;
+		border: none;
+		border-radius: 0;
+		box-shadow: none;
+		cursor: pointer;
+		height: 10px;
+		margin: 0 0 25px;
+		width: 100%;
+		border-top-left-radius: 25px;
+		-moz-border-radius-topleft: 25px;
+		border-top-right-radius: 25px;
+		-moz-border-radius-topright: 25px;
+		border-bottom-left-radius: 25px;
+		-moz-border-radius-bottomleft: 25px;
+		border-bottom-right-radius: 25px;
+		-moz-border-radius-bottomright: 25px;
+	}
+	.ui-slider-range {
+		background: $heading-color;
+		border: none;
+		box-shadow: none;
+		height: 100%;
+	}
+	.ui-slider-handle {
+		background: $primary-color;
+		border: none;
+		content: '';
+		display: block;
+		width: 15px;
+		height: 15px;
+		line-height: 15px;
+		margin: 0;
+		text-align: center;
+		top: 50%;
+		border-radius: 100%;
+		box-shadow: 0px 0px 6.65px .35px rgba(0, 0, 0, 0.15);
+		-webkit-transform: translate(0, -50%);
+		transform: translate(0, -50%);
+		&:last-child {
+			-webkit-transform: translate(-100%, -50%);
+			transform: translate(-100%, -50%);
+		}
+		&:before {
+			background: $primary-color;
+			content: '';
+			display: inline-block;
+			height: 5px;
+			vertical-align: middle;
+			width: 5px;
+			border-radius: 100%;
+		}
+	}
+	.price-slider-amount {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: center;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+		.label-input {
+			label {
+				color: #222;
+				font-size: 14px;
+				margin: 0;
+				text-transform: capitalize;
+			}
+			input {
+				background: transparent none repeat scroll 0 0;
+				border: medium none;
+				box-shadow: none;
+				color: #222;
+				font-size: 14px;
+				height: inherit;
+				padding-left: 5px;
+				width: 99px;
+			}
+		}
+	}
+}
+
+/* ---Color List Area--- */
+.color-list_area {
+	border: 1px solid $border-color;
+	padding: 25px;
+	@include breakpoint (max-x_small) {
+		padding: 15px;
+	}
+	.color-list_heading {
+		padding-bottom: 15px;
+		> h4 {
+			text-transform: uppercase;
+			margin-bottom: 0;
+			@include breakpoint (max-x_small) {
+				font-size: 14px;
+			}
+		}
+	}
+	.sub-title {
+		display: block;
+		padding-bottom: 20px;
+	}
+	.color-list {
+		display: -webkit-inline-box;
+		display: -ms-inline-flexbox;
+		display: inline-flex;
+		position: relative;
+		.single-color {
+			border: 1px solid $border-color;
+			display: inline-block;
+			margin-right: 5px;
+			padding: 2px;
+			width: 25px;
+			height: 25px;
+			span {
+				width: 100%;
+				height: 100%;
+				&.bg-red_color {
+					background-color: $bg-red_color;
+					display: block;
+				}
+				&.burnt-orange_color {
+					background-color: $burnt-orange_color;
+					display: block;
+				}
+				&.brown_color {
+					background-color: $brown_color;
+					display: block;
+				}
+				&.raw-umber_color {
+					background-color: $raw-umber_color;
+					display: block;
+				}
+			}
+			&.active {
+				.color-text {
+					color: $heading-color;
+					display: block;
+				}
+			}
+		}
+		.color-text {
+			position: absolute;
+			right: -120px;
+			width: auto !important;
+			top: 0;
+			display: none;
+			@include breakpoint (max-x_small) {
+				right: -110px;
+			}
+		}
+	}
+}
+
+/* ---Hiraola's Image Hover Effect--- */
+.img-hover_effect {
+	position: relative;
+	display: block;
+	a {
+		overflow: hidden;
+		display: block;
+		img {
+			width: 100%;
+			height: 100%;
+		}
+		&:before {
+			background: $primary-color;
+			bottom: 0;
+			content: "";
+			left: 50%;
+			position: absolute;
+			right: 51%;
+			top: 0;
+			opacity: 0.6;
+		}
+		&:after {
+			background: $primary-color;
+			bottom: 50%;
+			content: "";
+			left: 0;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			opacity: 0.6;
+		}
+	}
+	&:hover {
+		a {
+			&:before {
+				left: 0;
+				right: 0;
+				opacity: 0;
+				transition: all 900ms ease-in;
+			}
+			&:after {
+				top: 0;
+				bottom: 0;
+				opacity: 0;
+				transition: all 900ms ease-in;
+			}
+		}
+	}
+}
+
+/* ---Aista's Newsletters Popup--- */
+.popup_wrapper {
+	background: rgba(0, 0, 0, 0.7) none repeat scroll 0 0;
+	height: 100%;
+	opacity: 0;
+	position: fixed;
+	@extend %basetransition;
+	visibility: hidden;
+	width: 100%;
+	z-index: 9999999;
+	@include breakpoint (max-medium) {
+		display: none;
+	}
+	.test {
+		background: $bg-white_color;
+		bottom: 0;
+		height: 390px;
+		left: 0;
+		margin: auto;
+		max-width: 1145px;
+		padding: 50px 60px 50px;
+		position: absolute;
+		right: 0;
+		top: 0;
+		@include breakpoint (max-large) {
+			max-width: 810px;
+		}
+		.popup_off {
+			background: $bg-nero_color;
+			color: $bg-white_color;
+			top: -30px;
+			right: 0;
+			width: 30px;
+			height: 30px;
+			line-height: 29px;
+			display: block;
+			cursor: pointer;
+			position: absolute;
+			text-align: center;
+			text-transform: uppercase;
+			@extend %basetransition;
+			> i {
+				transform: rotate(0deg);
+				@extend %basetransition;
+				display: block;
+			}
+			&:hover {
+				> i {
+					transform: rotate(180deg);
+				}
+			}
+		}
+	}
+	.subscribe_area {
+		> h2 {
+			color: $heading-color;
+			font-weight: $heading-font_weight;
+			font-size: 35px;
+			text-transform: uppercase;
+			margin-bottom: 0;
+			padding-bottom: 20px;
+		}
+		> p {
+			margin: 0 auto;
+			max-width: 580px;
+			padding-bottom: 25px;
+		}
+		.subscribe-form-group {
+			display: flex;
+			justify-content: center;
+			form {
+				input {
+					background: $bg-whisper_color;
+					border: 0 none;
+					height: 40px;
+					padding: 0 20px;
+					width: 520px;
+				}
+				button {
+					background: $heading-color;
+					color: $bg-white_color;
+					padding: 0 40px;
+					height: 40px;
+					line-height: 40px;
+					border: 0;
+					display: block;
+					margin: 30px auto 0;
+					text-transform: uppercase;
+					@extend %basetransition;
+				}
+			}
+		}
+		.subscribe-bottom {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding-top: 25px;
+			input {
+				margin-right: 5px;
+			}
+			label {
+				margin-bottom: 0;
+			}
+		}
+	}
+}

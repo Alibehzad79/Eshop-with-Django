@@ -1,0 +1,252 @@
+/*----------------------------------------*/
+/*  20 - Components - Modal
+/*----------------------------------------*/
+/* ---Modal--- */
+.modal-wrapper {
+	display: block !important;
+	&.modal {
+		visibility: hidden;
+		opacity: 0;
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+		@extend %basetransition;
+		z-index: -9;
+	}
+	&.show {
+		background-color: rgba(0, 0, 0, .9);
+		visibility: visible;
+		opacity: 1;
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+		z-index: 1050;
+	}
+	.modal-dialog {
+		max-width: 86%;
+		@include breakpoint (max-x_small) {
+			max-width: 100%;
+			left: 0;
+		}
+		.modal-content {
+			padding: 30px 30px 25px;
+			height: 755px;
+			overflow-y: auto;
+			@include breakpoint (max-large) {
+				height: 505px;
+				overflow-y: auto;
+				border-radius: 0;
+			}
+			.modal-body {
+				padding: 0;
+				.close {
+					font-size: 30px;
+					font-weight: 400;
+					opacity: 1;
+					-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+					position: absolute;
+					right: 15px;
+					top: 0;
+					z-index: 99;
+					@extend %basetransition;
+					@include breakpoint (max-normal) {
+						font-size: 25px;
+					}
+				}
+				.modal-inner-area {
+					border-bottom: 1px solid $border-color;
+					padding: 0 0 30px !important;
+					.sp-img_slider-2 {
+						border: 1px solid $border-color;
+					}
+					.sp-img_slider-nav {
+						padding: 0 60px;
+						margin-top: 30px;
+						.slick-list {
+							margin-left: -15px;
+							.single-slide {
+								border: 1px solid $border-color;
+								margin-left: 15px;
+								img {
+									width: 100%;
+								}
+							}
+						}
+					}
+					.sp-content {
+						@include breakpoint (max-small) {
+							padding-top: 25px;
+						}
+						.sp-heading {
+							> h5 {
+								margin-bottom: 0;
+								padding-bottom: 20px;
+								@include breakpoint (max-normal) {
+									font-size: 18px;
+								}
+							}
+						}
+						.rating-box {
+							padding-bottom: 15px;
+							> ul {
+								> li {
+									display: inline-block;
+								}
+							}
+						}
+						.price-box {
+							padding-bottom: 10px;
+							.new-price {
+								font-size: 24px;
+							}
+							@include old-price;
+						}
+						.essential_stuff {
+							border-bottom: 1px solid $border-color;
+							padding-bottom: 20px;
+						}
+						.list-item {
+							padding-top: 15px;
+							&.last-child {
+								padding: 10px 0 20px;
+							}
+						}
+						.quantity {
+							padding-top: 15px;
+						}
+						.hiraola-group_btn {
+							padding-top: 22px;
+							> ul {
+								> li {
+									display: inline-block;
+									margin-left: 5px;
+									&:first-child {
+										margin-left: 0;
+									}
+									> a {
+										border: 2px solid $border-color;
+										width: 50px;
+										height: 50px;
+										line-height: 47px;
+										display: block;
+										text-align: center;
+										&.add-to_cart {
+											background-color: $heading-color;
+											border: 2px solid $heading-color;
+											color: $bg-white_color;
+											width: 140px;
+											@include breakpoint (max-x_small) {
+												width: 110px;
+											}
+											&:hover {
+												background-color: $primary-color;
+												color: $bg-white_color !important;
+											}
+										}
+										> i {
+											font-size: 18px;
+										}
+										&:hover {
+											border-color: $primary-color;
+										}
+									}
+								}
+							}
+						}
+						.hiraola-tag-line {
+							display: flex;
+							padding-top: 20px;
+							align-items: center;
+							h6 {
+								margin-bottom: 0;
+								padding-right: 5px;
+							}
+							> span {
+								padding-right: 5px;
+							}
+							> a {
+								@include breakpoint (max-x_small) {
+									font-size: 14px;
+								}
+							}
+						}
+						.hiraola-social_btn {
+							padding-top: 17px;
+							> ul {
+								> li {
+									display: inline-block;
+									opacity: 0.8;
+									@extend %basetransition;
+									position: relative;
+									> a {
+										background: $facebook-color;
+										color: $bg-white_color;
+										padding: 2px 5px;
+										border-radius: 2px;
+										font-size: 14px;
+										&:hover {
+											color: $bg-white_color !important;
+										}
+										> i {
+											padding-right: 5px;
+										}
+									}
+									&:nth-child(2) {
+										> a {
+											background-color: $twitter-color;
+										}
+									}
+									&:nth-child(3) {
+										> a {
+											background-color: $share-color;
+										}
+									}
+									&:hover {
+										opacity: 1;
+									}
+									.dropdown {
+										background-color: $bg-white_color;
+										border: 1px solid $border-color;
+										box-shadow: 0 1px 2px 2px rgba(0, 0, 0, 0.2);
+										width: 165px;
+										padding: 4px;
+										transform-origin: 0 0 0;
+										@extend %basetransition;
+										position: absolute;
+										opacity: 0;
+										visibility: hidden;
+										bottom: 25px;
+										left: 0;
+										z-index: 99;
+										@include breakpoint (max-x_small) {
+											left: auto;
+											right: 0;
+										}
+										> li {
+											display: flex;
+											align-items: center;
+											margin-bottom: 5px;
+											cursor: pointer;
+											@extend %basetransition;
+											&:hover {
+												background-color: $facebook-color;
+												color: $bg-white_color;
+											}
+											> i {
+												text-align: center;
+												flex-basis: 30px;
+												width: 30px;
+											}
+										}
+									}
+									&:hover {
+										> .dropdown {
+											opacity: 1;
+											visibility: visible;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,206 @@
+{% extends 'shared/mainLayout.html' %}
+{% load render_partial %}
+{% load ratings %}
+
+{% block title %}
+    Shop : Products List
+{% endblock title %}
+
+
+{% block content %}
+    {% include 'shared/breadcrumb.html' with title="Shop" sub_title="Products" %}
+    <div class="hiraola-content_wrapper">
+        <div class="container">
+            <div class="row">
+                {% render_partial 'shop_app.views.slidebar' %}
+                <div class="col-lg-9 order-1 order-lg-2">
+                    <div class="shop-toolbar">
+                        <div class="product-view-mode">
+                            <h5>Choose a product</h5>
+                        </div>
+                        <div class="product-item-selection_area">
+                        </div>
+                    </div>
+                    {% if object_list %}
+                        <div class="shop-product-wrap grid gridview-3 row">
+                            {% for product in object_list %}
+                                {% if product.active == True %}
+                                    <div class="col-lg-4">
+                                        <div class="slide-item">
+                                            <div class="single_product">
+                                                <div class="product-img">
+                                                    {% if product.is_discount %}
+                                                        <span class="sticker-2">{{ product.product_discount }} %</span>
+                                                    {% endif %}
+                                                    <a href="{% url 'product_detail' product.id product.product_name_in_url %}">
+                                                        <img class="primary-img" width="438" height="438"
+                                                             src="{{ product.image.url }}"
+                                                             alt="{{ product.product_name }}"
+                                                             title="{{ product.product_name }}">
+                                                        <img class="secondary-img" width="438" height="438"
+                                                             src="{{ product.image.url }}"
+                                                             alt="{{ product.product_name }}"
+                                                             title="{{ product.product_name }}">
+                                                    </a>
+                                                    <div class="add-actions">
+                                                        <ul>
+                                                            <li class="quick-view-btn" data-toggle="modal"
+                                                                data-target="#exampleModalCenter"><a
+                                                                    href="{% url 'product_detail' product.id product.product_name_in_url %}"
+                                                                    data-toggle="tooltip"
+                                                                    data-placement="top"
+                                                                    title="See Detail"><i
+                                                                    class="ion-eye"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="hiraola-product_content">
+                                                    <div class="product-desc_info">
+                                                        <h6>
+                                                            <div class="sp-content">
+                                                                <i class="fa fa-eye"> {{ product.visit_count }} </i>
+                                                                <br><br>
+                                                                <a class="product-name"
+                                                                   href="{% url 'product_detail' product.id product.product_name_in_url %}">{{ product.product_name }}</a>
+                                                        </h6>
+                                                        <div class="price-box">
+                                                            <span class="new-price">${{ product.get_discount }}</span>
+                                                            &nbsp;
+                                                            {% if product.product_discount != None %}
+                                                                <strike>${{ product.product_price }}</strike>
+                                                            {% endif %}
+                                                        </div>
+                                                        <br><br>
+                                                        <div class="additional-add_action">
+                                                            <ul>
+                                                                {% if product in wish_lists %}
+                                                                    <li><a class="hiraola-add_compare"
+                                                                           href="{% url 'remove-wishlist' product.id %}"
+                                                                           data-toggle="tooltip" data-placement="top"
+                                                                           title=""
+                                                                           data-original-title="Remove in Wishlist"><i
+                                                                            class="ion-android-favorite"></i></a>
+                                                                    </li>
+                                                                {% else %}
+                                                                    <li><a class="hiraola-add_compare"
+                                                                           href="{% url 'add-wishlist' product.id %}"
+                                                                           data-toggle="tooltip" data-placement="top"
+                                                                           title=""
+                                                                           data-original-title="Add To Wishlist"><i
+                                                                            class="ion-android-favorite-outline"></i></a>
+                                                                    </li>
+                                                                {% endif %}
+
+                                                            </ul>
+                                                        </div>
+                                                        <div class="rating-box">
+                                                            <ul>
+                                                                {% ratings product %}
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div class="col-lg-4">
+                                        <div class="slide-item">
+                                            <div class="single_product">
+                                                <div class="product-img">
+
+                                                    <a href="{% url 'product_detail' product.id product.product_name_in_url %}">
+                                                        <img class="primary-img" width="438" height="438"
+                                                             src="{{ product.image.url }}"
+                                                             alt="{{ product.product_name }}"
+                                                             title="{{ product.product_name }}">
+                                                        <img class="secondary-img" width="438" height="438"
+                                                             src="{{ product.image.url }}"
+                                                             alt="{{ product.product_name }}"
+                                                             title="{{ product.product_name }}">
+                                                    </a>
+                                                    <div class="add-actions">
+                                                        <ul>
+                                                            <li class="quick-view-btn" data-toggle="modal"
+                                                                data-target="#exampleModalCenter"><a
+                                                                    href="{% url 'product_detail' product.id product.product_name_in_url %}"
+                                                                    data-toggle="tooltip"
+                                                                    data-placement="top"
+                                                                    title="See Detail"><i
+                                                                    class="ion-eye"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="hiraola-product_content">
+                                                    <div class="product-desc_info">
+                                                        <h6>
+                                                            <div class="sp-content">
+                                                                <i class="fa fa-eye"> {{ product.visit_count }} </i>
+                                                                <br><br>
+                                                                <a class="product-name"
+                                                                   href="{% url 'product_detail' product.id product.product_name_in_url %}">{{ product.product_name }}</a>
+                                                        </h6>
+                                                        <div class="price-box text-danger">
+                                                            ❌ Not In Stock ❌
+                                                        </div>
+                                                        <br><br>
+                                                        <div class="additional-add_action">
+                                                            <ul>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="rating-box">
+                                                            <ul>
+                                                                {% ratings product %}
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <br>
+                        <p class="alert alert-danger text-center">Product not found</p>
+                        <br>
+                    {% endif %}
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="hiraola-paginatoin-area">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <ul class="hiraola-pagination-box">
+                                            <li>
+                                                {% if page_obj.has_previous %}
+                                                    <a class="Previous"
+                                                       href="?page={{ page_obj.previous_page_number }}"><i
+                                                            class="ion-ios-arrow-left"></i></a>
+                                                {% endif %}
+                                            </li>
+                                            {% for page in paginator.page_range %}
+                                                {% if page == page_obj.number %}
+                                                    <li class="active"><a href="?page={{ page }}">{{ page }}</a></li>
+                                                {% else %}
+                                                    <li><a href="?page={{ page }}">{{ page }}</a></li>
+                                                {% endif %}
+                                            {% endfor %}
+                                            <li>
+                                                {% if page_obj.has_next %}
+                                                    <a class="Next" href="?page={{ page_obj.next_page_number }}"><i
+                                                            class="ion-ios-arrow-right"></i></a></li>
+                                                {% endif %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

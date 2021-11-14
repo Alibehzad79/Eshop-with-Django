@@ -1,0 +1,574 @@
+/*----------------------------------------*/
+/*  25 - Section - Header
+/*----------------------------------------*/
+/* ---Header Top Area--- */
+.header-top_area {
+	border-bottom: 1px solid $border-color;
+	@include breakpoint (max-medium) {
+		display: none;
+	}
+	.ht-menu {
+		> ul {
+			display: flex;
+			justify-content: flex-start;
+			> li {
+				border-right: 1px solid $border-color;
+				display: inline-block;
+				position: relative;
+				@include breakpoint (max-medium) {
+					border: 0;
+				}
+				&:hover {
+					.ht-dropdown {
+						transform: scaleY(1);
+					}
+					> a {
+						color: $primary-color-3;
+					}
+				}
+				// Begin Header Top Dropdown Area
+				.ht-dropdown {
+					-webkit-transform: scaleY(0);
+					transform: scaleY(0);
+					-webkit-transform-origin: 0 0 0;
+					@extend %basetransition;
+					position: absolute;
+					top: 100%;
+					left: auto;
+					background: $bg-white_color;
+					border: 1px solid $border-color;
+					width: 150px;
+					padding: 10px;
+					right: 0;
+					z-index: 99;
+					> li {
+						&.active {
+							a {
+								color: $primary-color-3;
+							}
+						}
+						&:hover {
+							a {
+								color: $primary-color-3;
+							}
+						}
+						a {
+							border-bottom: 1px solid $border-color;
+							display: block;
+							padding: 10px 5px;
+							line-height: 25px;
+							font-size: 12px;
+							img {
+								margin-right: 5px;
+							}
+						}
+						&:first-child {
+							> a {
+								padding-top: 0;
+							}
+						}
+						&:last-child {
+							> a {
+								border-bottom: 0;
+								padding-bottom: 0;
+							}
+						}
+					}
+				}
+				// Header Top Dropdown Area End Here
+				> a {
+					color: $dim-gray_color;
+					padding: 8px 15px;
+					display: block;
+					text-transform: uppercase;
+					font-size: 12px;
+					> i {
+						padding-left: 5px;
+						font-size: 11px;
+					}
+				}
+			}
+		}
+	}
+	.ht-left_area {
+		.header-shipping_area {
+			> ul {
+				> li {
+					height: 40px;
+					line-height: 35px;
+				}
+			}
+		}
+	}
+	.ht-right_area {
+		display: flex;
+		justify-content: flex-end;
+		@include breakpoint (max-medium) {
+			justify-content: center !important;
+			padding-bottom: 15px;
+		}
+		.hiraola-social_link {
+			padding-top: 0;
+			> ul {
+				> li {
+					padding-right: 0;
+					> a {
+						border-top: 0;
+						border-bottom: 0;
+						border-left: 0;
+						@include breakpoint (max-medium) {
+							border: 0;
+						}
+					}
+					&:first-child {
+						> a {
+							border-left: 1px solid $border-color;
+							@include breakpoint (max-medium) {
+								border-left: 0 !important;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+/* ---Header Middle Area--- */
+.header-middle_area {
+	padding: 30px;
+	.hm-form_area {
+		display: flex;
+		justify-content: flex-end;
+	}
+	// Search Bar
+	.hm-searchbox {
+		background: $bg-white_color;
+		border: 1px solid $border-color;
+		display: flex;
+		position: relative;
+		border-radius: 5px;
+		min-width: 680px;
+		height: 45px;
+	}
+	.hm-searchbox .nice-select.select-search-category {
+		width: auto;
+		line-height: 43px;
+		height: 43px;
+		margin: 0;
+		border: 0;
+		padding: 0 28px 0 25px;
+		font-size: 13px;
+		border-radius: 15px 0 0 15px;
+		position: relative;
+	}
+	.select-search-category ul.list {
+		height: 440px;
+		overflow-y: auto;
+		overscroll-behavior-x: none;
+	}
+	.hm-searchbox .current::after {
+		content: "";
+		position: absolute;
+		display: block;
+		height: 22px;
+		width: 1px;
+		background: $border-color;
+		top: 10px;
+		right: -10px;
+		font-size: 13px;
+	}
+	.hm-searchbox .nice-select.select-search-category::before {
+		right: 30px;
+		top: 25px;
+	}
+	.hm-searchbox input {
+		font-size: 13px;
+		height: 45px;
+		background: transparent;
+		border: none;
+		width: 100%;
+		padding: 0 60px 0 33px;
+	}
+	// Header Right Area
+	.header-right_area {
+		display: flex;
+		justify-content: flex-end;
+		@include breakpoint (max-x_small) {
+			justify-content: center;
+		}
+		> ul {
+			> li {
+				display: inline-block;
+				> a {
+					color: $heading-color;
+					padding: 0 15px;
+					display: block;
+					font-size: 24px;
+					@include breakpoint (max-normal) {
+						padding: 30px 10px;
+					}
+					> i {
+						vertical-align: middle;
+						padding-right: 5px;
+					}
+					> span {
+						font-size: 16px;
+					}
+				}
+				&:last-child {
+					> a {
+						padding-right: 0;
+					}
+				}
+			}
+		}
+	}
+}
+/* ---Header Bottom Area--- */
+.header-bottom_area {
+	background-color: $primary-color;
+	> .container {
+		position: relative;
+	}
+	.header-logo {
+		padding-top: 15px;
+		@include breakpoint (max-medium) {
+			padding: 15px 0 30px;
+		}
+		@include breakpoint (small) {
+			padding: 15px 0 0;
+		}
+		@include breakpoint (max-x_small) {
+			text-align: center;
+			padding: 30px 0 0;
+		}
+	}
+	// Header Main Menu
+	.main-menu_area {
+		display: flex;
+		justify-content: flex-start;
+		> nav {
+			> ul {
+				> li {
+					display: inline-block;
+					padding-right: 30px;
+					&:last-child {
+						padding-right: 0;
+					}
+					@include dropdown;
+					> ul {
+						> li {
+							position: relative;
+							// Begin Header Middle Sub Dropdown Area
+							> ul {
+								&.hm-sub_dropdown {
+									top: 30px;
+									left: 100%;
+									opacity: 0;
+									visibility: hidden;
+								}
+							}
+							> a {
+								display: block;
+								> i {
+									position: absolute;
+									top: 14px;
+									right: 25px;
+									display: block;
+									font-size: 12px;
+									transform: rotate(0);
+									@extend %basetransition;
+								}
+							}
+							&:hover {
+								> .hm-sub_dropdown {
+									top: 0;
+									opacity: 1;
+									visibility: visible;
+								}
+								> a {
+									> i {
+										transform: rotate(-90deg);
+									}
+								}
+							}
+							// Header Middle Sub Dropdown Area End Here
+						}
+					}
+					&.megamenu-holder {
+						position: static;
+						@include megamenu;
+						> ul {
+							> li {
+								width: 33.33%;
+								&.menu-item_img {
+									background-image: url("../images/menu/bg/1.jpg");
+									background-repeat: no-repeat;
+									background-size: cover;
+									margin: -30px;
+								}
+								> span {
+									&.megamenu-title {
+										font-size: 18px;
+										font-weight: 700;
+										text-transform: uppercase;
+										display: block;
+										padding-bottom: 15px;
+										@include breakpoint (normal) {
+											font-size: 15px;
+										}
+									}
+								}
+								> ul {
+									> li {
+										> a {
+											display: block;
+											line-height: 35px;
+											font-size: 16px;
+										}
+									}
+								}
+							}
+						}
+					}
+					> a {
+						font-weight: $heading-font_weight;
+						color: $bg-white_color;
+						display: block;
+						padding: 18px 0;
+						text-transform: uppercase;
+						position: relative;
+						&:before {
+							content: "";
+							border-left-width: 2px;
+							border-left-style: solid;
+							border-left-color: inherit;
+							position: absolute;
+							top: 50%;
+							left: -20px;
+							transform: translateY(-50%);
+							height: 13px;
+							width: 2px;
+							opacity: 0;
+							visibility: hidden;
+							@extend %basetransition;
+						}
+						&:after {
+							content: "";
+							border-left-width: 2px;
+							border-left-style: solid;
+							border-left-color: inherit;
+							position: absolute;
+							top: 50%;
+							right: -20px;
+							transform: translateY(-50%);
+							height: 13px;
+							width: 2px;
+							opacity: 0;
+							visibility: hidden;
+							@extend %basetransition;
+						}
+					}
+					&:hover {
+						> a {
+							color: $bg-white_color !important;
+							&:before {
+								opacity: 1;
+								visibility: visible;
+								left: -10px;
+							}
+							&:after {
+								opacity: 1;
+								visibility: visible;
+								right: -10px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	// Header Right Area
+	.header-right_area {
+		display: flex;
+		justify-content: flex-end;
+		@include breakpoint (max-x_small) {
+			justify-content: center;
+		}
+		> ul {
+			> li {
+				display: inline-block;
+				border-right: 1px solid rgba(0, 0, 0, .07);
+				@include breakpoint (max-x_small) {
+					border: 0;
+				}
+				> a {
+					width: 60px;
+					height: 60px;
+					line-height: 60px;
+					text-align: center;
+					display: block;
+					color: $bg-white_color;
+					font-size: 20px;
+					@include breakpoint (normal) {
+						width: 60px;
+					}
+					@include breakpoint (max-medium) {
+						height: 80px;
+						line-height: 80px;
+					}
+					> i {
+						font-size: 26px;
+					}
+				}
+				&:first-child {
+					border-left: 1px solid rgba(0, 0, 0, .07);
+					@include breakpoint (max-x_small) {
+						border: 0;
+					}
+				}
+			}
+		}
+		&.header-right_area-2 {
+			> ul {
+				> li {
+					border-right: 1px solid rgba(0, 0, 0, .07);
+					@include breakpoint (max-small) {
+						border-right: 0;
+					}
+					&:first-child {
+						border-left: 1px solid rgba(0, 0, 0, .07);
+						@include breakpoint (max-small) {
+							border-left: 0;
+						}
+					}
+					> a {
+						color: $heading-color;
+					}
+				}
+			}
+		}
+	}
+	&.header-bottom_area-2 {
+		background-color: transparent;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 1;
+		@include breakpoint (max-normal) {
+			background-color: $bg-white_color !important;
+			position: relative;
+		}
+		.container-fliud {
+			padding: 0 10%;
+			position: relative;
+			.header-logo {
+				@include breakpoint (normal) {
+					padding-top: 20px;
+				}
+				@include breakpoint (small) {
+					padding: 20px 0 0;
+				}
+			}
+			.main-menu_area {
+				display: flex;
+				justify-content: center;
+				> nav {
+					> ul {
+						> li {
+							@include breakpoint (normal) {
+								padding-right: 16px;
+							}
+							> a {
+								padding: 30px 0;
+								color: $bg-black_color;
+								&:before {
+									color: $bg-black_color;
+								}
+								&:after {
+									color: $bg-black_color;
+								}
+							}
+							&:hover {
+								> a {
+									color: $primary-color !important;
+									&:before {
+										color: $primary-color;
+									}
+									&:after {
+										color: $primary-color;
+									}
+								}
+							}
+							&.megamenu-holder {
+								> ul {
+									left: 10%;
+									width: calc(100% - 20%);
+								}
+							}
+						}
+					}
+				}
+			}
+			.header-right_area {
+				> ul {
+					> li {
+						> a {
+							width: 70px;
+							height: 85px;
+							line-height: 85px;
+							color: $bg-black_color;
+							@include breakpoint (normal) {
+								width: 50px;
+							}
+							@include breakpoint (xx-small) {
+								width: 50px;
+							}
+							&:hover {
+								color: $primary-color !important;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+/* ---Header Sticky--- */
+.header-main_area {
+	.header-sticky.sticky {
+		background: $primary-color;
+		box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
+		left: 0;
+		position: fixed;
+		right: 0;
+		top: 0;
+		-webkit-transition: all 300ms ease-in 0s;
+		transition: all 300ms ease-in 0s;
+		z-index: 1049;
+		@include breakpoint (max-x_small) {
+			position: static;
+		}
+		&.sticky {
+			-webkit-animation: 800ms ease-in-out 0s normal none 1 running slideInDown;
+			animation: 800ms ease-in-out 0s normal none 1 running slideInDown;
+		}
+		&.header-sticky {
+			&:hover {
+				background: $primary-color;
+			}
+		}
+	}
+	&.header-main_area-2 {
+		.header-sticky.sticky {
+			background-color: $bg-white_color;
+			&.header-sticky {
+				&:hover {
+					background: $bg-white_color;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,124 @@
+/*----------------------------------------*/
+/*  35 - Pages - Cart
+/*----------------------------------------*/
+.hiraola-cart-area {
+	padding: 80px 0;
+}
+.table-content {
+	table {
+		td {
+			&.product-subtotal {
+				font-size: 16px;
+				font-weight: 700;
+			}
+			&.quantity {
+				.cart-plus-minus {
+					margin: 0 auto;
+				}
+			}
+		}
+	}
+}
+
+.hiraola-cart-area {
+	.table-content {
+		table {
+			td {
+				&:nth-child(3) {
+					@include breakpoint (max-small) {
+						padding: 45.1px 10px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.coupon-all {
+	margin-top: 30px;
+	.coupon {
+		float: left;
+		input {
+			background-color: transparent;
+			border: 1px solid $border-color;
+			font-size: 13px;
+			border-radius: 0;
+			height: 42px;
+			width: 120px;
+			padding: 0 10px;
+		}
+	}
+	.coupon,
+	.coupon2 {
+		input {
+			&.button {
+				background-color: $body-text_color;
+				border: 0 none;
+				border-radius: 2px;
+				color: $bg-white_color;
+				display: inline-block;
+				font-size: 13px;
+				font-weight: 700;
+				cursor: pointer;
+				height: 42px;
+				letter-spacing: 1px;
+				line-height: 42px;
+				padding: 0 25px;
+				text-transform: uppercase;
+				@extend %basetransition;
+				width: inherit;
+				&:hover {
+					background: $primary-color;
+				}
+			}
+		}
+		&.coupon2 {
+			float: right;
+			@include breakpoint (xx-small) {
+				float: left;
+				padding-top: 30px;
+			}
+		}
+	}
+}
+
+.cart-page-total {
+	padding-top: 30px;
+	> h2 {
+		font-size: 25px;
+		font-weight: 700;
+		margin-bottom: 20px;
+		text-transform: capitalize;
+	}
+	> ul {
+		border: 1px solid $border-color;
+		li {
+			list-style: none;
+			font-size: 15px;
+			padding: 10px 30px;
+			border-bottom: 1px solid $border-color;
+			font-weight: 700;
+			&:last-child {
+				border-bottom: 0;
+			}
+			span {
+				float: right;
+			}
+		}
+	}
+	a {
+		background-color: $body-text_color;
+		border: 1px solid $border-color;
+		color: $bg-white_color;
+		display: inline-block;
+		margin-top: 30px;
+		padding: 10px 20px;
+		text-transform: capitalize;
+		@extend %basetransition;
+		&:hover {
+			background: $primary-color;
+			border-color: $primary-color;
+			color: $bg-white_color !important;
+		}
+	}
+}

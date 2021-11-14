@@ -1,0 +1,139 @@
+/*----------------------------------------*/
+/*  33 - Pages - Login | Register
+/*----------------------------------------*/
+/* ---JB's Login Register Area--- */
+.hiraola-login-register_area {
+	padding: 80px 0;
+}
+[class*="col-"] {
+	&:first-child {
+		form {
+			.login-form {
+				@include breakpoint (max-medium) {
+					margin-bottom: 30px;
+				}
+			}
+		}
+	}
+}
+.login-form {
+	background-color: #ffffff;
+	padding: 30px;
+	-webkit-box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.1);
+	box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.1);
+	.login-title {
+		font-size: 20px;
+		line-height: 23px;
+		text-transform: capitalize;
+		font-weight: 700;
+		margin-bottom: 0;
+		padding-bottom: 20px;
+	}
+	label {
+		display: block;
+		font-size: 14px;
+		margin-bottom: 12px;
+		font-weight: 500;
+		text-transform: capitalize;
+	}
+	input {
+		width: 100%;
+		background-color: transparent;
+		border: 1px solid $border-color;
+		border-radius: 0;
+		line-height: 23px;
+		padding: 10px 20px;
+		font-size: 14px;
+		color: $input-placeholder_color;
+		margin-bottom: 15px;
+	}
+	input[type="checkbox"] {
+		width: auto;
+	}
+}
+
+.login-form {
+	.check-box {
+		float: left;
+		margin-right: 70px;
+		&:last-child {
+			margin-right: 0;
+		}
+		input[type="checkbox"] {
+			display: none;
+		}
+		input[type="checkbox"] + label {
+			position: relative;
+			padding-left: 30px;
+			line-height: 20px;
+			font-size: 14px;
+			font-weight: 400;
+			color: $input-placeholder_color;
+			margin: 0;
+			&:before {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 20px;
+				height: 20px;
+				display: block;
+				border: 2px solid $border-color;
+				content: "";
+				@extend %basetransition;
+			}
+			&:after {
+				position: absolute;
+				left: 0;
+				top: 0;
+				display: block;
+				content: "\f00c";
+				font-family: 'Font Awesome 5 Free';
+				font-weight: 600;
+				font-size: 12px;
+				line-height: 20px;
+				opacity: 0;
+				width: 20px;
+				text-align: center;
+				@extend %basetransition;
+			}
+		}
+		input[type="checkbox"]:checked + label {
+			&:before {
+				border: 2px solid $input-placeholder_color;
+			}
+			&:after {
+				opacity: 1;
+			}
+		}
+	}
+}
+.forgotton-password_info {
+	@include breakpoint(max-small) {
+		padding-top: 15px;
+	}
+}
+
+/*-- Place Order --*/
+.hiraola-login_btn,
+.hiraola-register_btn {
+	background-color: $body-text_color;
+	color: $bg-white_color;
+	display: block;
+	margin-top: 30px;
+	width: 140px;
+	border-radius: 0;
+	height: 40px;
+	line-height: 40px;
+	border: 0;
+	text-transform: uppercase;
+	@extend %basetransition;
+	@include breakpoint (max-small) {
+		margin-top: 25px;
+	}
+	&:hover {
+		background: $primary-color;
+	}
+}
+.hiraola-register_btn {
+	margin-top: 15px;
+}

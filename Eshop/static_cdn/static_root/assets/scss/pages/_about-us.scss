@@ -1,0 +1,201 @@
+/*----------------------------------------*/
+/*  39 - Pages - About Us
+/*----------------------------------------*/
+.about-us-area {
+	padding-top: 80px;
+	.overview-content {
+		> h2 {
+			font-size: 32px;
+			font-weight: 500;
+			margin-bottom: 25px;
+			padding-bottom: 20px;
+			position: relative;
+			text-transform: uppercase;
+			@include breakpoint (normal) {
+				font-size: 30px;
+			}
+			@include breakpoint (medium) {
+				font-size: 26px;
+			}
+			@include breakpoint (max-small) {
+				font-size: 20px;
+			}
+			@include breakpoint (xx-small) {
+				font-size: 18px;
+			}
+			span {
+				color: $primary-color;
+			}
+			&:before {
+				background-color: $white-smoke_color;
+				bottom: 0;
+				content: "";
+				height: 2px;
+				left: 0;
+				position: absolute;
+				@extend %basetransition;
+				width: 100%;
+			}
+			&:after {
+				content: "";
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				background: $primary-color;
+				height: 2px;
+				width: 170px;
+			}
+		}
+		> .short_desc {
+			margin-bottom: 0;
+			padding-bottom: 25px;
+		}
+		.hiraola-about-us_btn-area {
+			@include breakpoint (max-small) {
+				float: left;
+				width: 100%;
+				padding-bottom: 30px;
+			}
+			.about-us_btn {
+				background: $primary-color;
+				color: $bg-white_color;
+				display: block;
+				float: left;
+				height: 50px;
+				line-height: 50px;
+				width: 145px;
+				text-align: center;
+				border-radius: 3px;
+				transition: all 0.3s ease-in-out;
+				&:hover {
+					background: $body-text_color;
+					color: $bg-white_color !important;
+				}
+			}
+		}
+	}
+}
+
+// JB's CounterUp
+.project-count-area {
+	padding-top: 60px;
+	.single-count {
+		&:hover {
+			.count-icon {
+				span {
+					animation: 850ms ease-in-out 0s normal none 1 running tada;
+				}
+			}
+		}
+		.count-icon {
+			span {
+				font-size: 50px;
+				color: #595959;
+				line-height: 1;
+				display: inline-block;
+			}
+		}
+		.count-title {
+			h2 {
+				color: $primary-color;
+				font-size: 40px;
+				font-weight: bold;
+				letter-spacing: 0.2px;
+				margin: 15px 0 5px;
+			}
+			> span {
+				font-size: 20px;
+				text-transform: capitalize;
+			}
+		}
+	}
+	[class*="col-"] {
+		&:nth-child(-n + 2) {
+			.single-count {
+				@include breakpoint (medium) {
+					padding-bottom: 30px;
+				}
+				@include breakpoint (small) {
+					padding-bottom: 30px;
+				}
+			}
+		}
+		@include breakpoint (max-x_small) {
+			padding-bottom: 30px;
+		}
+		&:last-child {
+			@include breakpoint (max-x_small) {
+				padding-bottom: 0;
+			}
+		}
+	}
+}
+
+// JB's Team Member
+.team-area {
+	padding-top: 70px;
+	padding-bottom: 80px;
+	.section_title-2 {
+		margin-bottom: 30px;
+	}
+	.team-member {
+		.team-thumb {
+			img {
+				width: 100%;
+				display: block;
+				overflow: hidden;
+			}
+		}
+		.team-content {
+			padding-top: 25px;
+			h3 {
+				font-size: 20px;
+				line-height: 28px;
+				text-transform: capitalize;
+				margin-bottom: 0;
+				padding-bottom: 10px;
+			}
+			p {
+				margin-bottom: 0;
+				padding-bottom: 15px;
+			}
+			.hiraola-social_link {
+				padding-top: 20px;
+				> ul {
+					> li {
+						padding-right: 5px;
+						> a {
+							width: 35px;
+							height: 35px;
+							line-height: 33px;
+							@include breakpoint (max-normal) {
+								width: 30px;
+								height: 30px;
+								line-height: 30px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	[class*="col-"] {
+		&:nth-child(-n + 2) {
+			.team-member {
+				@include breakpoint (medium) {
+					padding-bottom: 30px;
+				}
+				@include breakpoint (small) {
+					padding-bottom: 30px;
+				}
+			}
+		}
+		&:nth-child(-n + 3) {
+			.team-member {
+				@include breakpoint (max-x_small) {
+					padding-bottom: 30px;
+				}
+			}
+		}
+	}
+}

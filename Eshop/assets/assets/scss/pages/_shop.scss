@@ -1,0 +1,379 @@
+/*----------------------------------------*/
+/*  29 - Pages - Shop
+/*----------------------------------------*/
+.hiraola-content_wrapper {
+	padding-top: 75px;
+}
+// Hiraola's Sidebar Categories
+.hiraola-sidebar-catagories_area {
+	.hiraola-sidebar_categories {
+		background-color: $bg-white_color;
+		border: 1px solid $border-color;
+		padding: 25px;
+		margin-bottom: 60px;
+		.hiraola-categories_title {
+			border-bottom: 2px solid $border-color;
+			position: relative;
+			&:before {
+				content: "";
+				background-color: $primary-color;
+				width: 70px;
+				height: 2px;
+				position: absolute;
+				bottom: -2px;
+				left: 0;
+			}
+			h5 {
+				text-transform: uppercase;
+				margin-bottom: 0;
+				padding-bottom: 25px;
+				&:after {
+					height: 2px;
+					bottom: -2px;
+				}
+			}
+		}
+		.sidebar-checkbox_list {
+			> li {
+				padding-bottom: 15px;
+				&:first-child {
+					padding-top: 20px;
+				}
+			}
+		}
+		&.category-module {
+			padding: 0;
+			.category-module_heading {
+				background-color: $primary-color;
+				padding: 15px;
+				> h5 {
+					color: $bg-white_color;
+					text-transform: uppercase;
+				}
+			}
+			.module-body {
+				padding: 20px 25px 25px;
+				> .module-list_item {
+					> li {
+						> a {
+							padding-bottom: 15px;
+							display: block;
+						}
+						.module-sub-list_item {
+							> li {
+								padding-left: 20px;
+								> a {
+									padding-bottom: 15px;
+									display: block;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.sidebar-banner_area {
+	padding-bottom: 60px;
+	.banner-item {
+		border: 1px solid $border-color;
+	}
+}
+
+/* ---Shop Paginatoin Area--- */
+.hiraola-content_wrapper {
+	.hiraola-paginatoin-area {
+		padding: 0 0 75px;
+		.hiraola-pagination-box {
+			@include breakpoint (max-x_small) {
+				display: flex;
+				justify-content: center;
+				padding-bottom: 20px;
+			}
+		}
+		.product-select-box {
+			@include breakpoint (max-x_small) {
+				justify-content: center;
+			}
+			.product-short {
+				> p {
+					padding-left: 0;
+				}
+			}
+		}
+	}
+}
+
+/* ---Shop Toolbar--- */
+.shop-toolbar {
+	border: 1px solid $border-color;
+	display: flex;
+	justify-content: space-between;
+	padding: 15px;
+	@include breakpoint (max-x_small) {
+		display: block;
+	}
+	.product-view-mode {
+		> a {
+			color: $heading-color;
+			display: inline-block;
+			cursor: pointer;
+			padding-right: 10px;
+			font-size: 18px;
+			&.active {
+				color: $primary-color;
+			}
+		}
+	}
+	.product-item-selection_area {
+		display: flex;
+		@include breakpoint (max-x_small) {
+			padding-top: 30px;
+			display: block;
+			text-align: center;
+		}
+		.product-short {
+			display: flex;
+			align-items: center;
+			@include breakpoint (max-x_small) {
+				justify-content: center;
+			}
+			> label {
+				margin-bottom: 0;
+				padding-right: 25px;
+				@include breakpoint (max-medium) {
+					padding-right: 10px;
+				}
+			}
+			.nice-select {
+				width: 320px;
+				height: 30px;
+				line-height: 25px;
+				@include breakpoint (xx-small) {
+					width: 180px;
+				}
+				.list {
+					width: 100%;
+				}
+			}
+		}
+		.product-showing {
+			display: flex;
+			align-items: center;
+			padding-left: 25px;
+			@include breakpoint (max-x_small) {
+				justify-content: center;
+				padding: 30px 0 0 0;
+			}
+			> label {
+				margin-bottom: 0;
+				padding-right: 25px;
+				@include breakpoint (max-medium) {
+					padding-right: 10px;
+				}
+			}
+			.myniceselect {
+				&.nice-select {
+					span {
+						height: 40px;
+						line-height: 40px;
+						@include breakpoint (max-small) {
+							padding: 0 35px 0 20px;
+						}
+					}
+					.list {
+						@include breakpoint (max-small) {
+							width: auto;
+							right: 0;
+							left: auto;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Shop Product Wrap
+.shop-product-wrap {
+	padding: 0 0 30px;
+	&.grid {
+		.list-slide_item {
+			display: none;
+		}
+		.slide-item {
+			display: block;
+			.single_product {
+				margin-top: 30px;
+				overflow: hidden;
+				.product-img {
+					overflow: visible;
+					img {
+						width: 100%;
+					}
+				}
+			}
+		}
+		&.gridview {
+			&-2 {
+				& > [class*="col-"] {
+					@include flex(0 0 50%);
+					max-width: 50%;
+					@include breakpoint (max-x_small) {
+						@include flex(0 0 100%);
+						max-width: 100%;
+					}
+				}
+			}
+			&-3 {
+				& > [class*="col-"] {
+					@include flex(0 0 33.333333%);
+					max-width: 33.333333%;
+					@include breakpoint (small) {
+						@include flex(0 0 50%);
+						max-width: 50%;
+					}
+					@include breakpoint (x-small) {
+						@include flex(0 0 50%);
+						max-width: 50%;
+					}
+					@include breakpoint (xx-small) {
+						@include flex(0 0 100%);
+						max-width: 100%;
+					}
+				}
+			}
+			&-4 {
+				& > [class*="col-"] {
+					@include flex(0 0 25%);
+					max-width: 25%;
+				}
+			}
+			&-5 {
+				& > [class*="col-"] {
+					@include flex(0 0 20%);
+					max-width: 20%;
+				}
+			}
+		}
+	}
+	&.listview {
+		& > [class*="col-"] {
+			@include flex(1 0 100%);
+			width: 100%;
+			max-width: 100%;
+			.list-slide_item {
+				display: block;
+				.single_product {
+					background-color: $bg-white_color;
+					margin-top: 30px;
+					padding: 25px;
+					overflow: hidden;
+					display: flex;
+					@include breakpoint (max-small) {
+						display: block;
+						padding: 15px 15px 30px;
+					}
+					.product-img {
+						position: relative;
+						flex-basis: 33.333%;
+						width: 33.333%;
+						@include breakpoint (max-small) {
+							flex-basis: 100%;
+							width: 100%;
+						}
+						> a {
+							display: block;
+							img {
+								width: 100%;
+							}
+							.secondary-img {
+								position: absolute;
+								left: 0;
+								top: 0;
+								opacity: 0;
+								@include transition-2;
+								width: 100%;
+							}
+						}
+						&:hover {
+							.secondary-img {
+								opacity: 1;
+							}
+						}
+					}
+					.hiraola-product_content {
+						flex-basis: 66.666%;
+						width: 66.666%;
+						padding-left: 30px;
+						@include breakpoint (max-small) {
+							flex-basis: 100%;
+							width: 100%;
+							padding-left: 0;
+						}
+						.product-desc_info {
+							> h6 {
+								margin-bottom: 0;
+								padding-bottom: 10px;
+							}
+							.rating-box {
+								padding-bottom: 5px;
+								> ul {
+									> li {
+										display: inline-block;
+									}
+								}
+							}
+							.price-box {
+								padding-bottom: 5px;
+							}
+							.product-short_desc {
+								> p {
+									margin-bottom: 0;
+									padding-bottom: 23px;
+								}
+							}
+						}
+						.add-actions {
+							> ul {
+								> li {
+									display: inline-block;
+									padding-left: 5px;
+									> a {
+										border: 1px solid $border-color;
+										padding: 10px 20px;
+										display: block;
+										@include breakpoint (xx-small) {
+											padding: 10px;
+										}
+										&:hover {
+											background-color: $primary-color;
+											color: $bg-white_color !important;
+										}
+									}
+									&:first-child {
+										.hiraola-add_cart {
+											background-color: $heading-color;
+											color: $bg-white_color;
+											&:hover {
+												background-color: $primary-color;
+												color: $bg-white_color !important;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.slide-item {
+				display: none;
+			}
+		}
+	}
+	& > [class*="col-"] {
+		@extend %basetransition;
+	}
+}

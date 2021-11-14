@@ -1,0 +1,32 @@
+/*----------------------------------------*/
+/*  19 - Components - Social Link
+/*----------------------------------------*/
+.hiraola-social_link {
+	padding-top: 25px;
+	> ul {
+		> li {
+			display: inline-block;
+			padding-right: 10px;
+			&:last-child {
+				padding-right: 0;
+			}
+			> a {
+				border: 1px solid $border-rgba_color-2;
+				font-size: 16px;
+				display: block;
+				width: 40px;
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				@include breakpoint (xx-small) {
+					width: 35px;
+					height: 35px;
+					line-height: 35px;
+				}
+				&:hover {
+					color: $bg-white_color !important;
+				}
+			}
+		}
+	}
+}

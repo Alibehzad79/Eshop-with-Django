@@ -1,0 +1,159 @@
+/*----------------------------------------*/
+/*  10 - Components - Button
+/*----------------------------------------*/
+// Limupa
+button.li-btn {
+	border: none;
+	background: $primary-color;
+	color: $bg-white_color;
+	font-size: 18px;
+	width: 45px;
+	border-radius: 0 2px 2px 0;
+	height: 45px;
+	line-height: 45px;
+	position: absolute;
+	right: -1px;
+	top: -1px;
+	@extend %basetransition;
+	cursor: pointer;
+}
+button.li-btn:hover {
+	background: $heading-color;
+	color: $bg-white_color;
+}
+
+/* --Hiraola's Search Button-- */
+.hiraola-search_btn {
+	background: transparent;
+	border: 0;
+	position: absolute;
+	right: 10px;
+	top: 15px;
+	color: $input-placeholder_color;
+	&:hover {
+		color: $primary-color;
+	}
+}
+
+/* ---Hiraola's Button Position--- */
+// Center
+.hiraola-btn-ps_center {
+	display: flex;
+	justify-content: center;
+	&.hiraola-btn-ps_left {
+		justify-content: flex-start;
+	}
+	&.hiraola-btn-ps_right {
+		justify-content: flex-end;
+	}
+}
+
+/* --Hiraola's Button-- */
+.hiraola-btn,
+.hiraola-banner_btn,
+.hiraola-btn-bondi_blue,
+.hiraola-btn_fullwidth,
+.hiraola-compare_btn,
+.hiraola-filter_btn,
+.hiraola-btn_dark,
+.hiraola-btn_limerick {
+	background-color: $primary-color;
+	color: $bg-white_color;
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0);
+	width: 195px;
+	height: 45px;
+	line-height: 45px;
+	display: block;
+	text-align: center;
+	text-transform: uppercase;
+	@extend %basetransition;
+	@include breakpoint (max-small) {
+		width: 140px;
+		height: 50px;
+		line-height: 55px;
+		font-size: 14px;
+	}
+}
+
+/* ---Hiraola's Button With Color Variation--- */
+.hiraola-btn-bondi_blue {
+	background-color: $primary-color;
+	color: $bg-white_color;
+	&:hover {
+		background-color: $body-text_color;
+		color: $bg-white_color !important;
+	}
+}
+.hiraola-btn_dark {
+	background: $body-text_color;
+	color: $bg-white_color;
+	width: 150px;
+	height: 40px;
+	line-height: 38px;
+	font-weight: 600;
+	border: 0;
+}
+.hiraola-btn_limerick {
+	background-color: $primary-color;
+	color: $bg-white_color;
+	width: 120px;
+	height: 40px;
+	line-height: 40px;
+	&:hover {
+		background-color: $heading-color;
+	}
+}
+/* ---Hiraola's Button With Various Sizes--- */
+.hiraola-btn_fullwidth {
+	background-color: $dim-gray_color;
+	width: 100%;
+	color: $bg-white_color;
+	text-transform: uppercase;
+}
+// Small Size
+.hiraola-btn_sm {
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	font-size: 13px;
+	font-weight: $body-font_weight;
+}
+/* ---Hiraola's Other Button--- */
+.hiraola-banner_btn {
+	box-shadow: 0px 1px 6.79px 0.21px rgba(0, 0, 0, 0.13);
+	height: 40px;
+	line-height: 40px;
+}
+.hiraola-compare_btn {
+	background: $primary-color;
+	color: $bg-white_color;
+	height: 40px;
+	line-height: 43px;
+	font-size: 14px;
+	&:hover {
+		background-color: $body-text_color;
+	}
+}
+.fb-filter-btn_area {
+	padding-top: 30px;
+	.hiraola-filter_btn {
+		background-color: $body-text_color;
+		color: $bg-white_color;
+		display: block;
+		width: 120px;
+		height: 40px;
+		line-height: 40px;
+		font-size: 14px;
+		font-weight: $body-font_weight;
+		border-radius: 0;
+		&:before {
+			content: "\f00d";
+			font-family: 'Font Awesome 5 Free';
+			font-weight: 600;
+			padding-right: 10px;
+		}
+		&:hover {
+			background-color: $primary-color;
+		}
+	}
+}

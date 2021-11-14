@@ -1,0 +1,484 @@
+/*----------------------------------------*/
+/*  30 - Pages - Single Product
+/*----------------------------------------*/
+
+/* ---Single Product Page--- */
+.sp-area {
+	padding: 60px 0 0;
+	.sp-nav {
+		background-color: $bg-white_color;
+		padding-top: 25px;
+		.zoompro-border {
+			border: 1px solid $border-color;
+		}
+		.sp-img_slider {
+			padding: 0 30px;
+			margin-top: 30px;
+			.slick-list {
+				margin: 0 -15px;
+				.slick-slide {
+					border: 1px solid $border-color;
+					margin: 0 15px;
+					img {
+						width: 100%;
+					}
+				}
+			}
+		}
+		.sp-content {
+			@include breakpoint (max-medium) {
+				padding-top: 30px;
+			}
+			.sp-heading {
+				> h5 {
+					margin-bottom: 0;
+					padding-bottom: 20px;
+					@include breakpoint (max-x_small) {
+						font-size: 18px;
+					}
+				}
+			}
+			.rating-box {
+				padding: 15px 0 20px;
+				> ul {
+					> li {
+						display: inline-block;
+						> i {
+							font-size: 14px;
+						}
+					}
+				}
+			}
+			.sp-essential_stuff {
+				> ul {
+					> li {
+						font-weight: $heading-font_weight;
+						> a {
+							font-weight: $body-font_weight;
+							padding-left: 5px;
+							> span {
+								color: $body-text_color !important;
+							}
+						}
+					}
+				}
+			}
+			.price-box {
+				padding-bottom: 10px;
+				@include old-price;
+				@include new-price;
+			}
+			.short-desc {
+				> p {
+					margin-bottom: 0;
+					padding-bottom: 20px;
+				}
+			}
+			.hiraola-countdown {
+				padding: 30px 0 0;
+			}
+			.product-size_box {
+				display: flex;
+				align-items: center;
+				padding-top: 25px;
+				> span {
+					padding-right: 15px;
+				}
+				.myniceselect {
+					&.nice-select {
+						> span {
+							height: 40px;
+							line-height: 40px;
+							padding: 0 30px;
+						}
+					}
+				}
+			}
+			.color-list_area {
+				margin-top: 25px;
+			}
+			.quantity {
+				padding-top: 30px;
+				.cart-plus-minus {
+					display: inline-block;
+					margin-left: 15px;
+				}
+			}
+			.qty-btn_area {
+				padding-top: 30px;
+				> ul {
+					li {
+						display: inline-block;
+						padding-left: 5px;
+						&:first-child {
+							padding-left: 0;
+						}
+						> a {
+							border: 1px solid $border-color;
+							display: block;
+							padding: 10px 15px;
+							@extend %basetransition;
+							> i {
+								display: block;
+							}
+						}
+					}
+				}
+			}
+			.hiraola-tag-line {
+				display: flex;
+				align-items: center;
+				padding-top: 23px;
+				> h6 {
+					font-size: 18px;
+					margin-bottom: 0;
+				}
+				> a {
+					padding-left: 10px;
+					display: block;
+					@include breakpoint (max-x_small) {
+						font-size: 14px;
+					}
+				}
+			}
+			.hiraola-social_link {
+				padding-top: 25px;
+				display: flex;
+				align-items: center;
+			}
+		}
+	}
+}
+
+/* ---Single Product Group Page--- */
+.sp-group_area {
+	.sp-nav {
+		.sp-content {
+			.choose-group-product {
+				padding-top: 30px;
+				.cart-table {
+					table {
+						margin-bottom: 0;
+						tbody {
+							tr {
+								td {
+									vertical-align: middle;
+									text-align: center;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---Single Produc Affiliate Page--- */
+.sp-affiliate_area {
+	.sp-content {
+		.qty-btn_area {
+			display: inline-block;
+			padding-top: 25px !important;
+			a {
+				&.qty-buy_btn {
+					background-color: $heading-color;
+					color: $bg-white_color;
+					padding: 15px 30px;
+					display: block;
+					&:hover {
+						background-color: $primary-color;
+						color: $bg-white_color !important;
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---Single Product Slider Area--- */
+.sp-slider_area {
+	padding-top: 60px;
+	.sp-nav {
+		padding: 30px 30px 0;
+		.sp-slider {
+			.slide-item {
+				.single_product {
+					.product-img {
+						position: relative;
+						overflow: hidden;
+						> a {
+							display: block;
+							.secondary-img {
+								position: absolute;
+								left: 0;
+								top: 0;
+								opacity: 0;
+								@include transition-2;
+								width: 100%;
+							}
+						}
+						&:hover {
+							.secondary-img {
+								opacity: 1;
+							}
+						}
+					}
+				}
+			}
+		}
+		.sp-content {
+			padding-top: 25px !important;
+			float: unset;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			text-align: center;
+			.product-size_box {
+				justify-content: center;
+			}
+			.hiraola-tag-line {
+				justify-content: center;
+				@include breakpoint (max-x_small) {
+					margin: 0 -30px;
+				}
+			}
+			.hiraola-social_link {
+				justify-content: center;
+				> ul {
+					> li {
+						> a {
+							@include breakpoint (xx-small) {
+								width: 35px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---Single Product Gallery--- */
+.sp-gallery_area {
+	.sp-nav {
+		padding-top: 30px;
+		.sp-gallery {
+			padding-left: 30px;
+			@include breakpoint (max-medium) {
+				padding: 0 30px;
+			}
+			.lg-image {
+				@extend %basetransition;
+				padding: 5px;
+				@include breakpoint (max-medium) {
+					margin-bottom: 30px;
+				}
+			}
+			> .row {
+				&:first-child {
+					margin-bottom: 30px;
+					@include breakpoint (max-medium) {
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+		.sp-content {
+			@include breakpoint (max-medium) {
+				padding: 0 30px 0 30px;
+			}
+		}
+	}
+}
+
+/* ---Single Product Gallery Right--- */
+.sp-gallery-right_area {
+	.sp-nav {
+		padding: 30px;
+		@include breakpoint (max-medium) {
+			padding: 30px 0;
+		}
+	}
+}
+
+/* ---Single Product Tab Style--- */
+.sp-tab-style_left {
+	.sp-img_area {
+		display: flex;
+		flex-direction: row-reverse;
+		.sp-large_img {
+			flex-basis: 80%;
+			width: 80%;
+		}
+		.sp-img_slider-3 {
+			flex-basis: 20%;
+			width: 20%;
+		}
+	}
+	&.sp-tab-style_right {
+		.sp-img_area {
+			flex-direction: unset !important;
+		}
+	}
+}
+
+/* ---Single Product Sticky--- */
+.sp-sticky_area {
+	.sp-sticky_gallery {
+		padding-left: 0 !important;
+		> .row {
+			&:first-child {
+				margin-bottom: 0 !important;
+			}
+			[class*="col-"] {
+				.lg-image {
+					margin-bottom: 30px;
+				}
+			}
+			&:last-child {
+				[class*="col-"] {
+					&:last-child {
+						.lg-image {
+							margin-bottom: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Single Product Tab Area | Single Product Page Style
+.sp-product-tab_area {
+	background-color: $body-bg_color;
+	padding-bottom: 0;
+	.sp-product-tab_nav {
+		background-color: $bg-white_color;
+		padding-top: 30px;
+		// Section Space Decrease For Gallery Right Page
+		&.decrease {
+			padding-top: 0;
+		}
+		.product-tab {
+			background-color: $white-smoke_color;
+			padding: 25px 0 25px;
+			.product-menu {
+				padding-bottom: 0 !important;
+			}
+		}
+		.tab-content {
+			border: 1px solid $border-color;
+			padding: 30px;
+			.product-description {
+				margin: -5px 0 -5px;
+				> ul {
+					max-height: 300px;
+					overflow: auto;
+					> li {
+						padding-top: 15px;
+						&:first-child {
+							padding-top: 0;
+						}
+						strong {
+							display: block;
+							font-size: 18px;
+							padding-bottom: 10px;
+						}
+					}
+				}
+			}
+			.form-horizontal {
+				.table-striped {
+					margin-bottom: 25px;
+					> tbody {
+						tr {
+							&:nth-child(2) {
+								td {
+									> p {
+										margin-bottom: 0;
+										padding-bottom: 20px;
+									}
+									.rating-box {
+										> ul {
+											> li {
+												display: inline-block;
+											}
+										}
+									}
+								}
+							}
+							td {
+								padding: 20px;
+							}
+						}
+					}
+				}
+				h2 {
+					margin-bottom: 0;
+					padding-bottom: 15px;
+				}
+				.form-group {
+					margin-bottom: 0;
+					padding-bottom: 15px;
+					&.second-child {
+						padding-bottom: 10px;
+					}
+					&.last-child {
+						padding-bottom: 0;
+					}
+					.review-input,
+					.review-textarea {
+						border: 1px solid $border-color;
+						width: 100%;
+						height: 30px;
+						&.review-textarea {
+							height: 120px;
+						}
+					}
+					label {
+						margin-bottom: 0;
+						padding-bottom: 18px;
+					}
+					.help-block {
+						padding-top: 18px;
+					}
+					.hiraola-btn-ps_right {
+						display: flex;
+						justify-content: flex-end;
+						@include breakpoint (xx-small) {
+							justify-content: flex-start;
+							padding-top: 20px;
+						}
+					}
+					.your-opinion {
+						span {
+							.br-wrapper {
+								.br-widget {
+									a {
+										font-size: 16px;
+										&.br-active {
+											&:after {
+												color: $primary-color;
+											}
+										}
+										&.br-selected {
+											&:after {
+												color: $primary-color;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---Single Product Slider Area--- */
+.sp-product-slider_area {
+	padding: 40px 0 60px;
+}

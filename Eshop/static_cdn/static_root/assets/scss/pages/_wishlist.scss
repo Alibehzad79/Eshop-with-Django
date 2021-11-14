@@ -1,0 +1,104 @@
+/*----------------------------------------*/
+/*  34 - Pages - Wishlist
+/*----------------------------------------*/
+.hiraola-wishlist_area {
+	padding: 80px 0;
+}
+.table-content {
+	table {
+		background: $bg-white_color none repeat scroll 0 0;
+		border-color: $border-color;
+		border-radius: 0;
+		border-style: solid;
+		border-width: 1px 0 0 1px;
+		text-align: center;
+		width: 100%;
+		margin-bottom: 0;
+		th,
+		td {
+			border-bottom: 1px solid $border-color;
+			border-right: 1px solid $border-color;
+		}
+		th {
+			border-top: medium none;
+			font-size: 15px;
+			text-transform: capitalize;
+			padding: 20px 10px;
+			text-align: center;
+			font-weight: 500;
+			vertical-align: middle;
+			// white-space: nowrap;
+		}
+		td {
+			border-top: medium none;
+			padding: 18px 10px;
+			vertical-align: middle;
+			font-size: 13px;
+			@include breakpoint (max-small) {
+				width: 100%;
+			}
+			&:nth-child(3) {
+				@include breakpoint (max-small) {
+					padding: 32.1px 10px;
+					display: block;
+					width: 180px;
+				}
+			}
+			&.hiraola-product_remove {
+				font-size: 20px;
+				> a {
+					&:hover {
+						i {
+							color: $primary-color;
+						}
+					}
+					> i {
+						font-size: 14px;
+						font-weight: 600;
+						transition: all 0.3s ease-in-out;
+					}
+				}
+			}
+			&.hiraola-product-name {
+				font-size: 16px;
+				font-weight: 500;
+				text-transform: capitalize;
+			}
+			&.hiraola-product-price {
+				font-size: 16px;
+				font-weight: 700;
+			}
+			&.hiraola-product-stock-status {
+				span {
+					&.in-stock,
+					&.out-stock {
+						color: $primary-color;
+						font-size: 12px;
+						text-transform: capitalize;
+					}
+					&.out-stock {
+						color: $bg-alizarin_color;
+					}
+				}
+			}
+			&.hiraola-cart_btn {
+				a {
+					font-size: 14px;
+					text-transform: uppercase;
+					background: $body-text_color;
+					color: $bg-white_color;
+					height: 40px;
+					line-height: 43px;
+					width: 130px;
+					font-weight: 700;
+					display: inline-block;
+					@extend %basetransition;
+					&:hover {
+						background: $primary-color;
+						color: $bg-white_color !important;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,568 @@
+/*----------------------------------------*/
+/*  04 - Utilities - Color
+/*----------------------------------------*/
+
+/* ---Backgroud Color | Only For HTML Markup---*/
+.bg--white_smoke {
+	background-color: $white-smoke_color;
+}
+.bg--white {
+	background-color: $bg-white_color;
+}
+
+.bg--night_rider {
+	background-color: $body-text_color;
+}
+
+.bg--silver {
+	background-color: $bg-silver_color;
+}
+.bg--nero {
+	background-color: $bg-nero_color;
+}
+
+/* ---All Default Color Variation Included In This Area---↓ */
+@for $i from 1 through length($colorList) {
+	.template-color-#{$i} {
+		// Default Anchor Tag Color
+		a {
+			&:hover {
+				color: nth($colorList, $i) !important;
+			}
+			&.hiraola-banner_btn {
+				&:hover {
+					color: $bg-white_color !important;
+				}
+			}
+			&.hiraola-btn_limerick {
+				&:hover {
+					color: $bg-white_color !important;
+				}
+			}
+			&.hiraola-btn_dark {
+				&:hover {
+					background-color: nth($colorList, $i);
+					color: $bg-white_color !important;
+				}
+			}
+		}
+		/* ---Aista's Newsletters Popup--- */
+		.popup_wrapper {
+			.test {
+				.popup_off {
+					&:hover {
+						background: nth($colorList, $i);
+					}
+				}
+			}
+			.subscribe_area {
+				.subscribe-form-group {
+					form {
+						button {
+							&:hover {
+								background: nth($colorList, $i);
+								color: $bg-white_color;
+							}
+						}
+					}
+				}
+			}
+		}
+		// Header Element Color
+		.hb-menu {
+			> nav {
+				> ul {
+					> li {
+						&:hover {
+							> a {
+								color: nth($colorList, $i) !important;
+							}
+						}
+						> ul {
+							> li {
+								&.active {
+									> a {
+										color: nth($colorList, $i) !important;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.header-right_area {
+			> ul {
+				> li {
+					> a {
+						&:hover {
+							color: $bg-white_color !important;
+						}
+					}
+				}
+			}
+		}
+		// Header Top Area
+		.header-top_area {
+			.ht-menu {
+				> ul {
+					> li {
+						&:hover {
+							> a {
+								color: nth($colorList, $i);
+							}
+						}
+						.ht-dropdown {
+							> li {
+								&.active {
+									a {
+										color: nth($colorList, $i);
+									}
+								}
+								&:hover {
+									a {
+										color: nth($colorList, $i);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.ht-right_area {
+				display: flex;
+				justify-content: flex-end;
+				.header-shipping_area {
+					padding-right: 20px;
+					> ul {
+						> li {
+							height: 40px;
+							line-height: 40px;
+						}
+					}
+				}
+				.hiraola-social_link {
+					padding-top: 0;
+					> ul {
+						> li {
+							padding-right: 0;
+							> a {
+								border-top: 0;
+								border-bottom: 0;
+								border-left: 0;
+							}
+							&:first-child {
+								> a {
+									border-left: 1px solid $border-color;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		// Offcanvas Element Color
+		.offcanvas-menu_wrapper {
+			.offcanvas-menu-inner {
+				.btn-close {
+					&:hover {
+						color: nth($colorList, $i);
+					}
+				}
+				.offcanvas-component_menu {
+					> li {
+						&.active {
+							> a {
+								color: nth($colorList, $i);
+							}
+						}
+					}
+				}
+			}
+		}
+		.offcanvas-minicart_wrapper {
+			.offcanvas-menu-inner {
+				.btn-close {
+					&:hover {
+						color: nth($colorList, $i);
+					}
+				}
+				.minicart-btn_area {
+					padding-bottom: 15px;
+					.hiraola-btn {
+						&:hover {
+							background-color: nth($colorList, $i);
+						}
+					}
+				}
+			}
+		}
+		.offcanvas-search_wrapper {
+			.offcanvas-menu-inner {
+				.offcanvas-search {
+					.hm-searchbox {
+						> .search_btn {
+							&:hover {
+								color: nth($colorList, $i);
+							}
+						}
+					}
+				}
+			}
+		}
+		/* ---Mobile Menu Wrapper--- */
+		.mobile-menu_wrapper {
+			.btn-close {
+				&:hover {
+					background-color: nth($colorList, $i);
+					color: $bg-white_color !important;
+				}
+			}
+		}
+		/* ---Offcanvas Navigation Area--- */
+		.offcanvas-navigation {
+			.mobile-menu {
+				li {
+					&:hover {
+						& > a {
+							color: nth($colorList, $i) !important;
+						}
+						& > .menu-expand {
+							color: nth($colorList, $i) !important;
+						}
+					}
+				}
+			}
+		}
+		// Default Slider Element Color
+		.main-slider {
+			.slider-content {
+				.hiraola-btn {
+					&:hover {
+						box-shadow: 0px 0 15px rgba(0, 0, 0, 0.2);
+						color: $bg-white_color !important;
+						background-color: lighten($primary-color, 7);
+					}
+				}
+			}
+			.slick-arrow {
+				color: nth($colorList, $i);
+			}
+		}
+		.hiraola-slider_area-3 {
+			.main-slider {
+				.slider-content {
+					.hiraola-btn-ps_left {
+						.hiraola-btn {
+							color: $bg-white_color;
+							&:hover {
+								color: $primary-color-3 !important;
+							}
+						}
+					}
+				}
+			}
+		}
+		.hiraola-product_slider,
+		.hiraola-product_slider-2,
+		.hiraola-trending-product_slider {
+			.slide-item {
+				.single_product {
+					.product-img {
+						.add-actions {
+							> ul {
+								> li {
+									> a {
+										&:hover {
+											background-color: nth($colorList, $i);
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.slick-arrow {
+				&:hover {
+					color: nth($colorList, $i);
+				}
+			}
+		}
+		.hiraola-product_slider,
+		.hiraola-product-tab_slider-2,
+		.hiraola-product-tab_slider-3,
+		.hiraola-product_slider-3,
+		.shop-product-wrap {
+			.slide-item {
+				.single_product {
+					border: 1px solid $border-color;
+					@extend %basetransition;
+					&:hover {
+						border-color: nth($colorList, $i);
+					}
+					.product-img {
+						.add-actions {
+							> ul {
+								> li {
+									> a {
+										&:hover {
+											background-color: nth($colorList, $i);
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.list-slide_item {
+				.single_product {
+					border: 1px solid $border-color;
+					@extend %basetransition;
+					&:hover {
+						border-color: nth($colorList, $i);
+					}
+				}
+			}
+			.slick-arrow {
+				color: $heading-color;
+				&:hover {
+					color: nth($colorList, $i);
+				}
+			}
+		}
+		.hiraola-testimonial_slider,
+		.hiraola-brand_slider {
+			.slick-arrow {
+				&:hover {
+					color: nth($colorList, $i);
+				}
+			}
+		}
+		/* ---Product Tab Menu Element Color--- */
+		.product-tab {
+			> ul {
+				> li {
+					> a {
+						&.active {
+							color: nth($colorList, $i);
+						}
+					}
+				}
+			}
+		}
+		// Default Rating Box Color
+		.rating-box {
+			> ul {
+				> li {
+					> i {
+						color: nth($colorList, $i);
+					}
+				}
+			}
+		}
+		// Default Footer Element Color
+		.widgets-essential_stuff {
+			> ul {
+				> li {
+					> i {
+						color: nth($colorList, $i);
+					}
+				}
+			}
+		}
+		.newsletter-form_wrap {
+			.subscribe-form {
+				.newsletter-btn {
+					background-color: nth($colorList, $i);
+				}
+			}
+		}
+		.hiraola-social_link {
+			> ul {
+				> li {
+					> a {
+						&:hover {
+							background-color: nth($colorList, $i);
+						}
+					}
+				}
+			}
+		}
+		.footer-bottom_area .footer-bottom_nav .copyright > span > a {
+			color: nth($colorList, $i);
+		}
+		// Default ScrollUp Element Color
+		#scrollUp {
+			background-color: nth($colorList, $i);
+			color: $bg-white_color;
+			&:hover {
+				background-color: $heading-color;
+				color: $bg-white_color !important;
+			}
+		}
+		/* ---Hiraola's Tooltip--- */
+		.tooltip-inner {
+			background-color: nth($colorList, $i);
+		}
+		.tooltip.bs-tooltip-auto[x-placement^=top] .arrow::before,
+		.tooltip.bs-tooltip-top .arrow::before {
+			border-top-color: nth($colorList, $i);
+		}
+		.bs-tooltip-auto[x-placement^=bottom] .arrow::before,
+		.bs-tooltip-bottom .arrow::before {
+			border-bottom-color: nth($colorList, $i);
+		}
+		/* ---Shop Page--- */
+		.shop-product-wrap {
+			&.grid {
+				.slide-item {
+					.single_product {
+						> .product-img {
+							> .add-actions {
+								> ul {
+									> li {
+										> a {
+											&:hover {
+												background-color: nth($colorList, $i);
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		/* ---Preloader--- */
+		.loading {
+			.middle {
+				.lds-ellipsis {
+					div {
+						background: nth($colorList, $i);
+					}
+				}
+			}
+		}
+		/* ---Color List Area--- */
+		.color-list {
+			.single-color {
+				&.active {
+					border-color: nth($colorList, $i);
+				}
+			}
+		}
+		/* ---Quick View Close Button Color--- */
+		.modal-body {
+			.close {
+				&:hover {
+					color: nth($colorList, $i);
+				}
+			}
+		}
+		/* ---Single Product Page--- */
+		.sp-area {
+			.sp-nav {
+				.sp-content {
+					.sp-essential_stuff {
+						> ul {
+							> li {
+								> a {
+									color: nth($colorList, $i);
+								}
+							}
+						}
+					}
+					.qty-btn_area {
+						> ul {
+							li {
+								> a {
+									&:hover {
+										border: 1px solid nth($colorList, $i);
+										color: $primary-color;
+									}
+									&.qty-cart_btn {
+										background-color: $heading-color;
+										color: $bg-white_color;
+										border: 0;
+										&:hover {
+											background-color: nth($colorList, $i);
+											color: $bg-white_color !important;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		/* ---Hiraola's Product Area Four--- */
+		.hiraola-product_area-4 {
+			.hiraola-product_slider-2 {
+				.slide-item {
+					.single_product {
+						border: 1px solid $border-color;
+						&:hover {
+							border-color: nth($colorList, $i);
+						}
+					}
+				}
+			}
+		}
+		/* ---Hiraola's Product Area Five--- */
+		.hiraola-product_area-5 {
+			.hiraola-product_slider-3 {
+				.slide-item {
+					.single_product {
+						.product-img {
+							.add-actions {
+								> ul {
+									> li {
+										> a {
+											&:hover {
+												background-color: nth($colorList, $i);
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				.slick-arrow {
+					color: nth($colorList, $i);
+				}
+			}
+		}
+		/* ---Single Product Slider Area Border Color--- */
+		.sp-slider {
+			.slide-item {
+				.single_product {
+					border: 1px solid $border-color;
+					&:hover {
+						border-color: nth($colorList, $i);
+					}
+				}
+			}
+			.slick-arrow {
+				color: nth($colorList, $i);
+			}
+		}
+		/* ---Single Product Gallery Outline Color--- */
+		.sp-gallery_area {
+			.sp-nav {
+				.sp-gallery {
+					.lg-image {
+						outline: 1px solid $border-color;
+						&:hover {
+							outline: 1px solid nth($colorList, $i);
+						}
+					}
+				}
+			}
+		}
+	}
+}

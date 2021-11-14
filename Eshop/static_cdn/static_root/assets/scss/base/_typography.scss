@@ -1,0 +1,142 @@
+/*----------------------------------------*/
+/*  00 - Base - Typography
+/*----------------------------------------*/
+
+body {
+	font-family: $body-font;
+	background-color: $body-bg_color;
+	color: $body-text_color;
+	font-size: $body-font-size;
+	line-height: $line-height;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $heading-font;
+	color: $heading-color;
+	line-height: $heading-line_height;
+	font-weight: $heading-font_weight;
+}
+
+p {
+	font-family: $body-font;
+	color: $body-text_color;
+	font-size: $body-font-size;
+	line-height: $line-height;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type=number] {
+	-moz-appearance: textfield;
+}
+
+input {
+	color: $input-placeholder_color;
+}
+
+input::placeholder {
+	color: $input-placeholder_color;
+}
+
+._keyfocus :focus,
+input:not([disabled]):focus,
+textarea:not([disabled]):focus,
+select:not([disabled]):focus {
+	outline: 0;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+img {
+	max-width: 100%;
+}
+
+.img-full {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	display: block;
+}
+
+a,
+button {
+	@extend %basetransition;
+}
+
+a {
+	color: $body-text_color;
+	&:hover {
+		color: $primary-color !important;
+		text-decoration: none;
+	}
+	&:not([href]):not([tabindex]) {
+		&:hover {
+			color: $primary-color;
+		}
+	}
+}
+
+a,
+a:hover,
+a:focus,
+a:active,
+button,
+button:focus,
+input,
+select,
+textarea {
+	outline: none;
+}
+
+button {
+	cursor: pointer;
+	border: none;
+	padding: 0;
+	outline: none;
+	background: transparent;
+}
+
+/* ---Alista's Blog Section Default Youtube & Soundcloud Height--- */
+// Blog Grid View
+.blog-grid-view_area {
+	.embed-responsive {
+		min-height: 260px;
+	}
+}
+// Blog List View
+.blog-list-view_area {
+	.embed-responsive {
+		min-height: 295px;
+	}
+}
+// Blog List Fullwidth
+.blog-list-fullwidth_area {
+	.embed-responsive {
+		min-height: 400px;
+	}
+}
+// Blog List Fullwidth
+.blog-column-three_area {
+	.embed-responsive {
+		min-height: 245px;
+		@include breakpoint (normal) {
+			min-height: 205px;
+		}
+		@include breakpoint (max-medium) {
+			min-height: 100%;
+		}
+	}
+}
