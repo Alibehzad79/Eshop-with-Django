@@ -44,6 +44,12 @@
                                                     </a>
                                                     <div class="add-actions">
                                                         <ul>
+                                                            <li><a class="hiraola-add_cart"
+                                                                   href="{% url 'add_to_cart' product.id %}"
+                                                                   data-toggle="tooltip" data-placement="top"
+                                                                   title="" data-original-title="Add To Cart"><i
+                                                                    class="ion-bag"></i></a>
+                                                            </li>
                                                             <li class="quick-view-btn" data-toggle="modal"
                                                                 data-target="#exampleModalCenter"><a
                                                                     href="{% url 'product_detail' product.id product.product_name_in_url %}"
@@ -141,6 +147,7 @@
                                                                 <br><br>
                                                                 <a class="product-name"
                                                                    href="{% url 'product_detail' product.id product.product_name_in_url %}">{{ product.product_name }}</a>
+                                                            </div>
                                                         </h6>
                                                         <div class="price-box text-danger">
                                                             ❌ Not In Stock ❌

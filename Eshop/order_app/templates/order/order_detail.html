@@ -48,21 +48,17 @@
                                             <td class="product-subtotal"><span
                                                     class="amount">${{ order.get_product_amount_price }}</span></td>
                                         </tr>
+
                                     {% endfor %}
-
-
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="coupon-all">
-                                        <div class="coupon">
-                                            <input id="coupon_code" class="input-text" name="coupon_code" value=""
-                                                   placeholder="Coupon code" type="text">
-                                            <input class="button" name="apply_coupon" value="Apply coupon"
-                                                   type="submit">
-                                        </div>
+                            <div class="col-12">
+                                <div class="coupon-all">
+                                    <div class="coupon">
+                                        <input id="coupon_code" class="input-text" name="coupon_code" value=""
+                                               placeholder="Coupon code" type="text">
+                                        <input class="button" name="apply_coupon" value="Apply coupon" type="submit">
                                     </div>
                                 </div>
                             </div>

@@ -1,12 +1,13 @@
 from django.contrib.auth.decorators import login_required
-from django.http import Http404
+
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from django.views.generic import ListView
+
 
 from accounts_app.models import MyUser
-from order_app.forms import CheckOutForm, OrderForm
+from shop_app.models import Product
+from order_app.forms import CheckOutForm
 from order_app.models import Orders, FinalOrder
 
 
@@ -28,8 +29,6 @@ def final_order(request):
     user = MyUser.objects.get(id=request.user.id)
     orders = user.orders_set.filter(is_payed=False).all()
     total = Orders.objects.filter(user=request.user.id, is_payed=False).first()
-    for order in orders:
-        print(order)
 
     form = CheckOutForm(request.POST or None,
                         initial={"city": user.city, "first_name": user.first_name, "last_name": user.last_name,
@@ -64,6 +63,7 @@ def final_order(request):
     return render(request, "order/checkout.html", context)
 
 
+@login_required(login_url="/accounts/login/")
 def delete_order(request, **kwargs):
     order_id = kwargs['order_id']
     Orders.objects.get(id=order_id).delete()

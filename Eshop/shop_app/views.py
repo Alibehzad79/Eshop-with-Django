@@ -218,3 +218,15 @@ def wishlist_view(request):
         'wish_lists': wish_lists,
     }
     return render(request, 'shop/wishlist.html', context)
+
+
+@login_required(login_url='/accounts/login/')
+def add_to_cart(request, **kwargs):
+    user = MyUser.objects.get(id=request.user.id)
+    product_id = kwargs['product_id']
+    product = Product.objects.get(id=product_id)
+    Orders.objects.create(user=user, product=product, size=product.product_size.first(),
+                          color=product.product_color.first(), price=product.product_price,
+                          price_discount=product.product_discount, count=1,
+                          date_created=datetime.datetime.now(), is_payed=False)
+    return redirect('cart')

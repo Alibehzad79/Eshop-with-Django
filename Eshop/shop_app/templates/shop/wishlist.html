@@ -9,179 +9,65 @@
 
 {% block content %}
     {% include 'shared/breadcrumb.html' with title="Other" sub_title="WishList" %}
-    <div class="hiraola-content_wrapper">
-        <div class="container">
-            <div class="row">
-                {% render_partial 'shop_app.views.slidebar' %}
-                <div class="col-lg-9 order-1 order-lg-2">
-                    {% if wishlists %}
-                        <div class="shop-product-wrap grid gridview-3 row">
-                            {% for wishlist in wishlists %}
-                                {% if wishlist.product.active == True %}
-                                    <div class="col-lg-4">
-                                        <div class="slide-item">
-                                            <div class="single_product">
-                                                <div class="product-img">
-                                                    {% if wishlist.product.is_discount %}
-                                                        <span class="sticker-2">{{ wishlist.product.product_discount }} %</span>
-                                                    {% endif %}
-                                                    <a href="{% url 'product_detail' wishlist.product.id wishlist.product.product_name_in_url %}">
-                                                        <img class="primary-img" width="438" height="438"
-                                                             src="{{ wishlist.product.image.url }}"
-                                                             alt="{{ wishlist.product.product_name }}"
-                                                             title="{{ wishlist.product.product_name }}">
-                                                        <img class="secondary-img" width="438" height="438"
-                                                             src="{{ wishlist.product.image.url }}"
-                                                             alt="{{ wishlist.product.product_name }}"
-                                                             title="{{ wishlist.product.product_name }}">
-                                                    </a>
-                                                    <div class="add-actions">
-                                                        <ul>
-                                                            <li class="quick-view-btn" data-toggle="modal"
-                                                                data-target="#exampleModalCenter"><a
-                                                                    href="{% url 'product_detail' wishlist.product.id wishlist.product.product_name_in_url %}"
-                                                                    data-toggle="tooltip"
-                                                                    data-placement="top"
-                                                                    title="See Detail"><i
-                                                                    class="ion-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <br>
-                                                <div class="hiraola-product_content">
-                                                    <div class="product-desc_info">
-                                                        <h6>
-                                                            <div class="sp-content">
-                                                                <i class="fa fa-eye"> {{ wishlist.product.visit_count }} </i>
-                                                                <br><br>
-                                                                <a class="product-name"
-                                                                   href="{% url 'product_detail' wishlist.product.id wishlist.product.product_name_in_url %}">{{ wishlist.product.product_name }}</a>
-                                                        </h6>
-                                                        <div class="price-box">
-                                                            <span class="new-price">${{ wishlist.product.get_discount }}</span>
+    {% if wishlists %}
+        <div class="hiraola-wishlist_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <form action="javascript:void(0)">
+                            <div class="table-content table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th class="hiraola-product_remove">remove</th>
+                                        <th class="hiraola-product-thumbnail">images</th>
+                                        <th class="cart-product-name">Product</th>
+                                        <th class="hiraola-product-price">Unit Price</th>
+                                        <th class="hiraola-product-stock-status">Stock Status</th>
+                                        <th class="hiraola-cart_btn">add to cart</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for wishlist in wishlists %}
+                                        <tr>
+                                            <td class="hiraola-product_remove"><a
+                                                    href="{% url 'remove-wishlist' wishlist.product.id %}"><i
+                                                    class="fa fa-trash" title="Remove"></i></a></td>
+                                            <td class="hiraola-product-thumbnail"><a
+                                                    href="{% url 'product_detail' wishlist.product.id wishlist.product.product_name_in_url %}"><img
+                                                    src="{{ wishlist.product.image.url }}"
+                                                    alt="{{ wishlist.product.product_name }}" width="90"
+                                                    height="115"></a>
+                                            </td>
+                                            <td class="hiraola-product-name"><a
+                                                    href="{% url 'product_detail' wishlist.product.id wishlist.product.product_name_in_url %}">{{ wishlist.product.product_name }}</a>
+                                            </td>
+                                            <td class="hiraola-product-price"><span
+                                                    class="amount">{% if wishlist.product.is_discount %}
+                                                £{{ wishlist.product.get_discount }}
+                                                <span class="badge badge-success p-1 badge-btn">{{ wishlist.product.product_discount }}%</span>
+                                            {% else %}
+                                                {{ wishlist.product.product_price }}
+                                            {% endif %} </span></td>
+                                            <td class="hiraola-product-stock-status"><span
+                                                    class="in-stock">in stock</span>
+                                            </td>
+                                            <td class="hiraola-cart_btn"><a
+                                                    href="{% url 'add_to_cart' wishlist.product.id %}">add to cart</a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
 
-                                                            {% if wishlist.product.product_discount != None %}
-                                                                <strike>${{ wishlist.product.product_price }}</strike>
-                                                            {% endif %}
-                                                        </div>
-                                                        <br><br>
-                                                        <div class="additional-add_action">
-                                                            <ul>
-                                                                {% if wishlist.product in wish_lists %}
-                                                                    <li><a class="hiraola-add_compare"
-                                                                           href="{% url 'remove-wishlist' wishlist.product.id %}"
-                                                                           data-toggle="tooltip" data-placement="top"
-                                                                           title=""
-                                                                           data-original-title="Remove in Wishlist"><i
-                                                                            class="ion-android-favorite"></i></a>
-                                                                    </li>
-                                                                {% else %}
-                                                                    <li><a class="hiraola-add_compare"
-                                                                           href="{% url 'add-wishlist' wishlist.product.id %}"
-                                                                           data-toggle="tooltip" data-placement="top"
-                                                                           title=""
-                                                                           data-original-title="Add To Wishlist"><i
-                                                                            class="ion-android-favorite-outline"></i></a>
-                                                                    </li>
-                                                                {% endif %}
-                                                            </ul>
-                                                        </div>
-
-                                                        <div class="rating-box">
-                                                            <ul>
-                                                                {% ratings wishlist.product %}
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% else %}
-                                    <div class="col-lg-4">
-                                        <div class="slide-item">
-                                            <div class="single_product">
-                                                <div class="product-img">
-
-                                                    <a href="{% url 'product_detail' wishlist.product.id wishlist.product.product_name_in_url %}">
-                                                        <img class="primary-img" width="438" height="438"
-                                                             src="{{ wishlist.product.image.url }}"
-                                                             alt="{{ wishlist.product.product_name }}"
-                                                             title="{{ wishlist.product.product_name }}">
-                                                        <img class="secondary-img" width="438" height="438"
-                                                             src="{{ wishlist.product.image.url }}"
-                                                             alt="{{ wishlist.product.product_name }}"
-                                                             title="{{ wishlist.product.product_name }}">
-                                                    </a>
-                                                    <div class="add-actions">
-                                                        <ul>
-                                                            <li class="quick-view-btn" data-toggle="modal"
-                                                                data-target="#exampleModalCenter"><a
-                                                                    href="{% url 'product_detail' wishlist.product.id wishlist.product.product_name_in_url %}"
-                                                                    data-toggle="tooltip"
-                                                                    data-placement="top"
-                                                                    title="See Detail"><i
-                                                                    class="ion-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <br>
-                                                <div class="hiraola-product_content">
-                                                    <div class="product-desc_info">
-                                                        <h6>
-                                                            <div class="sp-content">
-                                                                <i class="fa fa-eye"> {{ wishlist.product.visit_count }} </i>
-                                                                <br><br>
-                                                                <a class="product-name"
-                                                                   href="{% url 'product_detail' wishlist.product.id wishlist.product.product_name_in_url %}">{{ product.product_name }}</a>
-                                                        </h6>
-                                                        <div class="price-box text-danger">
-                                                            ❌ Not In Stock ❌
-                                                        </div>
-                                                        <br><br>
-                                                        <div class="additional-add_action">
-                                                            <ul>
-                                                                {% if wishlist.product in wish_lists %}
-                                                                    <li><a class="hiraola-add_compare"
-                                                                           href="{% url 'remove-wishlist' wishlist.product.id %}"
-                                                                           data-toggle="tooltip" data-placement="top"
-                                                                           title=""
-                                                                           data-original-title="Remove in Wishlist"><i
-                                                                            class="ion-android-favorite"></i></a>
-                                                                    </li>
-                                                                {% else %}
-                                                                    <li><a class="hiraola-add_compare"
-                                                                           href="{% url 'add-wishlist' wishlist.product.id %}"
-                                                                           data-toggle="tooltip" data-placement="top"
-                                                                           title=""
-                                                                           data-original-title="Add To Wishlist"><i
-                                                                            class="ion-android-favorite-outline"></i></a>
-                                                                    </li>
-                                                                {% endif %}
-                                                            </ul>
-                                                        </div>
-
-                                                        <div class="rating-box">
-                                                            <ul>
-                                                                {% ratings wishlist.product %}
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endif %}
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        <br>
-                        <p class="alert alert-danger text-center">Your WishList is Empty</p>
-                        <br>
-                    {% endif %}
-
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    {% else %}
+        <br>
+        <p class="alert alert-danger text-center">Your WishLists is Empty</p>
+    {% endif %}
 {% endblock content %}
