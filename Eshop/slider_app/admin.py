@@ -16,7 +16,7 @@ class SliderAdmin(admin.ModelAdmin):
 
 @admin.register(OfferSlide)
 class OfferSlideAdmin(admin.ModelAdmin):
-    list_display = ("banner_image", "__str__")
+    list_display = ("banner_image",)
 
 
 @admin.register(SliderBottomBanner)
