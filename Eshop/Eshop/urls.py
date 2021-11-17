@@ -40,3 +40,6 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = "Eshop.views.error404"
+admin.site.site_header = "پنل ادمین"
+admin.site.site_title = "پنل ادمین"
+admin.site.index_title = "پنل ادمین"
