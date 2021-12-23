@@ -137,7 +137,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / "assets",
+    BASE_DIR / "Eshop/assets",
 ]
 STATIC_ROOT = BASE_DIR / 'static_cdn' / 'static_root'
 
