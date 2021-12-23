@@ -14,7 +14,7 @@
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/venv" />
+      <sourceFolder url="file://$MODULE_DIR$/Eshop" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.9 (Eshop)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -28,7 +28,7 @@
     <option name="TEMPLATE_CONFIGURATION" value="Jinja2" />
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/Eshop/home_app/templates" />
+        <option value="$MODULE_DIR$/Eshop/templates" />
       </list>
     </option>
   </component>
