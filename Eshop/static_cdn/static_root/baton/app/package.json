@@ -13,9 +13,9 @@
   "author": "abidibo",
   "license": "MIT",
   "dependencies": {
-    "@babel/core": "^7.14.3",
-    "@babel/preset-env": "^7.14.4",
-    "@babel/register": "^7.13.16",
+    "@babel/core": "^7.23.3",
+    "@babel/preset-env": "^7.23.3",
+    "@babel/register": "^7.22.15",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "autoprefixer": "^10.2.6",
     "babel-cli": "^6.26.0",
