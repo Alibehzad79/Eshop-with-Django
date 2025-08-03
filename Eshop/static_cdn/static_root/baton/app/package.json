@@ -13,7 +13,7 @@
   "author": "abidibo",
   "license": "MIT",
   "dependencies": {
-    "@babel/core": "^7.14.3",
+    "@babel/core": "^7.28.0",
     "@babel/preset-env": "^7.14.4",
     "@babel/register": "^7.13.16",
     "@fortawesome/fontawesome-free": "^5.15.3",
